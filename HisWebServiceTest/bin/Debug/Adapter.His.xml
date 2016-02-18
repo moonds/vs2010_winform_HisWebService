@@ -1,0 +1,901 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<!--
+********适配器V3.0《Adapter.His.xml》使用说明********
+【注】：VS编译动态库前须设置该文件“复制到输出目录”属性为“始终复制”或者“如果较新则复制”。
+【注】：手动复制到交易控制器TransactionServer时须一并复制到与动态库同级目录。
+
+1.method【属性】
+（1）name：[主键值]必填项且method节点集中唯一
+（2）call：[必选项]通过“自定义接口管理器”进行接口对接调用
+（3）log：[必选项]用于配置是否记录接口返回值文本日志
+（4）description：[可选项]方法摘要
+2.params
+param【属性】
+（1）to：[主键值]必填项且param节点集中唯一
+（2）from：[mode已选时为必选项；mode未选时from值过滤]
+（3）mode：[可选项]system值：标识接收外部参数集；custom值：标识接收自定义参数集（可进行参数转换、自定义参数值等）
+（4）type：[必选项]调用服务时，需要转化成的数据类型，默认为string
+（5）description：[可选项]
+-->
+<root xmlns="http://inspur.com/ihss/Validation">
+    <method name="AdapterHisTest" call="AdapterHisTest" log="true" description="AdapterHisTest:测试方法">
+        <params>
+            <param to="time" from="time" mode="system" type="string" description="调用时间（yyyy-MM-dd HH:mm:ss）"></param>
+        </params>
+        <returns>
+            <return to="time" from="time" mode="system" type="string" description="调用时间（yyyy-MM-dd HH:mm:ss）"></return>
+        </returns>
+    </method>
+    <method name="NetTest" call="NetTest" log="true" description="NetTest:测试">
+        <params>
+            <param to="terminalIp" from="terminalIp" mode="system" type="string" description="终端Ip"></param>
+        </params>
+        <returns>
+            <return to="terminalIp" from="terminalIp" mode="system" type="string" description="终端Ip"></return>
+        </returns>
+    </method>
+    <!--卡管理-->
+    <method name="CheckPatientByIdCardNo" call="CheckPatientByIdCardNo" log="true" description="CheckPatientByIdCardNo:判断病人是否已经办卡">
+        <params>
+            <param to="IdCardNo" from="IdCardNo" mode="system" type="string" description="身份证号"></param>
+            <param to="terminalIp" from="terminalIp" mode="system" type="string" description="终端Ip"></param>
+        </params>
+        <returns>
+            <return to="IdCardNo" from="IdCardNo" mode="system" type="string" description="身份证号"></return>
+            <return to="terminalIp" from="terminalIp" mode="system" type="string" description="终端Ip"></return>
+        </returns>
+    </method>
+    <method name="CreateCard" call="CreateCardAddPosit" log="true" description="CreateCard:建卡/激活"  returnstype="String">
+        <params>
+            <param to="CardNo" from="CardNo" mode="system" type="string" description=""></param>
+            <param to="PatientName" from="PatientName" mode="system" type="string" description=""></param>
+            <param to="Sex" from="Sex" mode="system" type="string" description=""></param>
+            <param to="Birthday" from="Birthday" mode="system" type="string" description=""></param>
+            <param to="IDCardNo" from="IDCardNo" mode="system" type="string" description=""></param>
+            <param to="Nation" from="Nation" mode="system" type="string" description=""></param>
+            <param to="Address" from="Address" mode="system" type="string" description=""></param>
+            <param to="Tel" from="Tel" mode="system" type="string" description=""></param>
+            <param to="FlowNo" from="FlowNo" mode="system" type="string" description=""></param>
+            <param to="Pwd" from="Pwd" mode="system" type="string" description=""></param>
+            <param to="Amt" from="Amt" mode="system" type="string" description=""></param>
+            <param to="PayMode" from="PayMode" mode="system" type="string" description=""></param>
+            <param to="UserID" from="UserID" mode="system" type="string" description=""></param>
+        </params>
+        <returns>
+            <return to="patientCardNo" from="CardNo" mode="system" type="string" description="就诊卡号"></return>
+            <return to="Balance" from="Balance" mode="system" type="string" description="余额"></return>
+        </returns>
+    </method>
+    <method name="GetPatientInfo" call="QueryPatientInfo" log="true" description="GetPatientInfo:获取门诊病人信息">
+        <params>
+            <param to="patientCardNo" from="patientCardNo" mode="system" type="string" description="就诊卡号"></param>
+        </params>
+        <returns>
+            <return to="病人ID" from="CardNO" mode="system" type="string" description="病人ID"></return>
+            <return to="姓名" from="PatientName" mode="system" type="string" description="姓名"></return>
+            <return to="身份证号" from="IDCardNo" mode="system" type="string" description="身份证号"></return>
+            <return to="余额" from="AccBalance" mode="system" type="string" description="余额"></return>
+        </returns>
+    </method>
+    <method name="RevocationCard" call="RevocationCard" log="true" description="RevocationCard:注销卡">
+        <params>
+            <param to="patientCardNo" from="patientCardNo" mode="system" type="string" description="就诊卡号"></param>
+            <param to="cardPassword" from="cardPassword" mode="system" type="string" description="卡密码（需要传入时不为空）"></param>
+            <param to="operatorId" from="operatorId" mode="system" type="string" description="操作员号"></param>
+            <param to="terminalIp" from="terminalIp" mode="system" type="string" description="终端Ip"></param>
+        </params>
+        <returns>
+            <return to="patientCardNo" from="patientCardNo" mode="system" type="string" description="就诊卡号"></return>
+            <return to="cardPassword" from="cardPassword" mode="system" type="string" description="卡密码（需要传入时不为空）"></return>
+            <return to="operatorId" from="operatorId" mode="system" type="string" description="操作员号"></return>
+            <return to="terminalIp" from="terminalIp" mode="system" type="string" description="终端Ip"></return>
+        </returns>
+    </method>
+    <method name="SupplementaryCard" call="SupplementaryCard" log="true" description="SupplementaryCard:补卡">
+        <params>
+            <param to="patientCardNo" from="patientCardNo" mode="system" type="string" description="就诊卡号"></param>
+            <param to="IdCardNo" from="IdCardNo" mode="system" type="string" description="身份证号"></param>
+            <param to="newPatientCardNo" from="newPatientCardNo" mode="system" type="string" description="新就诊卡号"></param>
+            <param to="cardFaceNo" from="cardFaceNo" mode="system" type="string" description="卡面号（需要传入时不为空）"></param>
+            <param to="cardPassword" from="cardPassword" mode="system" type="string" description="卡密码（需要传入时不为空）"></param>
+            <param to="operateTime" from="operateTime" mode="system" type="string" description="操作时间（yyyy-MM-dd HH:mm:ss）"></param>
+            <param to="operatorId" from="operatorId" mode="system" type="string" description="操作员号"></param>
+            <param to="terminalIp" from="terminalIp" mode="system" type="string" description="终端Ip"></param>
+        </params>
+        <returns>
+            <return to="patientCardNo" from="patientCardNo" mode="system" type="string" description="就诊卡号"></return>
+            <return to="IdCardNo" from="IdCardNo" mode="system" type="string" description="身份证号"></return>
+            <return to="newPatientCardNo" from="newPatientCardNo" mode="system" type="string" description="新就诊卡号"></return>
+            <return to="cardFaceNo" from="cardFaceNo" mode="system" type="string" description="卡面号（需要传入时不为空）"></return>
+            <return to="cardPassword" from="cardPassword" mode="system" type="string" description="卡密码（需要传入时不为空）"></return>
+            <return to="operateTime" from="operateTime" mode="system" type="string" description="操作时间（yyyy-MM-dd HH:mm:ss）"></return>
+            <return to="operatorId" from="operatorId" mode="system" type="string" description="操作员号"></return>
+            <return to="terminalIp" from="terminalIp" mode="system" type="string" description="终端Ip"></return>
+        </returns>
+    </method>
+    <method name="ChangeCardPassword" call="ChangeCardPassword" log="true" description="ChangeCardPassword:修改卡密码">
+        <params>
+            <param to="patientCardNo" from="patientCardNo" mode="system" type="string" description="就诊卡号"></param>
+            <param to="IdCardNo" from="IdCardNo" mode="system" type="string" description="身份证号"></param>
+            <param to="patientName" from="patientName" mode="system" type="string" description="病人姓名"></param>
+            <param to="oldCardPassword" from="oldCardPassword" mode="system" type="string" description="旧密码"></param>
+            <param to="newCardPassword" from="newCardPassword" mode="system" type="string" description="新密码"></param>
+            <param to="operateTime" from="operateTime" mode="system" type="string" description="操作时间（yyyy-MM-dd HH:mm:ss）"></param>
+            <param to="operatorId" from="operatorId" mode="system" type="string" description="操作员号"></param>
+            <param to="terminalIp" from="terminalIp" mode="system" type="string" description="终端Ip"></param>
+        </params>
+        <returns>
+            <return to="patientCardNo" from="patientCardNo" mode="system" type="string" description="就诊卡号"></return>
+            <return to="IdCardNo" from="IdCardNo" mode="system" type="string" description="身份证号"></return>
+            <return to="patientName" from="patientName" mode="system" type="string" description="病人姓名"></return>
+            <return to="oldCardPassword" from="oldCardPassword" mode="system" type="string" description="旧密码"></return>
+            <return to="newCardPassword" from="newCardPassword" mode="system" type="string" description="新密码"></return>
+            <return to="operateTime" from="operateTime" mode="system" type="string" description="操作时间（yyyy-MM-dd HH:mm:ss）"></return>
+            <return to="operatorId" from="operatorId" mode="system" type="string" description="操作员号"></return>
+            <return to="terminalIp" from="terminalIp" mode="system" type="string" description="终端Ip"></return>
+        </returns>
+    </method>
+    <method name="MakeUpCardInfo" call="MakeUpCardInfo" log="true" description="MakeUpCardInfo:补录卡信息">
+        <params>
+            <param to="patientCardNo" from="patientCardNo" mode="system" type="string" description="就诊卡号"></param>
+            <param to="cardPassword" from="cardPassword" mode="system" type="string" description="卡密码（需要传入时不为空）"></param>
+            <param to="patientName" from="patientName" mode="system" type="string" description="病人姓名"></param>
+            <param to="sex" from="sex" mode="system" type="string" description="性别（1男、2女、9未知）"></param>
+            <param to="nation" from="nation" mode="system" type="string" description="民族"></param>
+            <param to="birthDate" from="birthDate" mode="system" type="string" description="出生日期（yyyy-MM-dd）"></param>
+            <param to="address" from="address" mode="system" type="string" description="住址"></param>
+            <param to="IdCardNo" from="IdCardNo" mode="system" type="string" description="身份证号"></param>
+            <param to="telephone" from="telephone" mode="system" type="string" description="联系电话"></param>
+            <param to="patientType" from="patientType" mode="system" type="string" description="病人类型"></param>
+            <param to="profession" from="profession" mode="system" type="string" description="职业（需要传入时不为空）"></param>
+            <param to="operateTime" from="operateTime" mode="system" type="string" description="操作时间（yyyy-MM-dd HH:mm:ss）"></param>
+            <param to="operatorId" from="operatorId" mode="system" type="string" description="操作员号"></param>
+            <param to="terminalIp" from="terminalIp" mode="system" type="string" description="终端Ip"></param>
+        </params>
+        <returns>
+            <return to="patientCardNo" from="patientCardNo" mode="system" type="string" description="就诊卡号"></return>
+            <return to="cardPassword" from="cardPassword" mode="system" type="string" description="卡密码（需要传入时不为空）"></return>
+            <return to="patientName" from="patientName" mode="system" type="string" description="病人姓名"></return>
+            <return to="sex" from="sex" mode="system" type="string" description="性别（1男、2女、9未知）"></return>
+            <return to="nation" from="nation" mode="system" type="string" description="民族"></return>
+            <return to="birthDate" from="birthDate" mode="system" type="string" description="出生日期（yyyy-MM-dd）"></return>
+            <return to="address" from="address" mode="system" type="string" description="住址"></return>
+            <return to="IdCardNo" from="IdCardNo" mode="system" type="string" description="身份证号"></return>
+            <return to="telephone" from="telephone" mode="system" type="string" description="联系电话"></return>
+            <return to="patientType" from="patientType" mode="system" type="string" description="病人类型"></return>
+            <return to="profession" from="profession" mode="system" type="string" description="职业（需要传入时不为空）"></return>
+            <return to="operateTime" from="operateTime" mode="system" type="string" description="操作时间（yyyy-MM-dd HH:mm:ss）"></return>
+            <return to="operatorId" from="operatorId" mode="system" type="string" description="操作员号"></return>
+            <return to="terminalIp" from="terminalIp" mode="system" type="string" description="终端Ip"></return>
+        </returns>
+    </method>
+    <method name="GetReservePatientCardNo" call="GetReservePatientCardNo" log="true" description="GetReservePatientCardNo:获取预留就诊卡号（银行端申请就诊卡）">
+        <params>
+            <param to="operateTime" from="operateTime" mode="system" type="string" description="操作时间（yyyy-MM-dd HH:mm:ss）"></param>
+            <param to="terminalIp" from="terminalIp" mode="system" type="string" description="终端Ip"></param>
+        </params>
+        <returns>
+            <return to="operateTime" from="operateTime" mode="system" type="string" description="操作时间（yyyy-MM-dd HH:mm:ss）"></return>
+            <return to="terminalIp" from="terminalIp" mode="system" type="string" description="终端Ip"></return>
+        </returns>
+    </method>
+    <!--充值/转账交易-->
+    <method name="PatientCardRecharge" call="AddDeposit" log="true" description="PatientCardRecharge:就诊卡充值">
+        <params>
+            <param to="patientCardNo" from="patientCardNo" mode="system" type="string" description="就诊卡号"></param>
+            <param to="amt" from="amt" mode="system" type="string" description="金额（单位：元）"></param>
+            <param to="modeType" from="modeType" mode="system" type="string" description="支付方式（1现金，2银行卡）"></param>
+            <param to="bankNo" from="bankNo" mode="system" type="string" description="银行卡号（需要传入时不为空）"></param>
+            <param to="trace" from="trace" mode="system" type="string" description="流水号（yyyyMMddHHmmss+8位终端号）"></param>
+            <param to="terminalIp" from="terminalIp" mode="system" type="string" description="终端Ip"></param>
+        </params>
+        <returns>
+            <return to="ReceiptNo" from="ReceiptNo" mode="system" type="string" description="流水号"></return>
+            <return to="CardYuE" from="CardYuE" mode="system" type="string" description="余额"></return>
+        </returns>
+    </method>
+    <method name="GetPatientCardRefundBalance" call="GetPatientCardRefundBalance" log="true" description="GetPatientCardRefundBalance:获取就诊卡在自助机可退款金额">
+        <params>
+            <param to="patientCardNo" from="patientCardNo" mode="system" type="string" description="就诊卡号"></param>
+            <param to="terminalIp" from="terminalIp" mode="system" type="string" description="终端Ip"></param>
+        </params>
+        <returns>
+            <return to="patientCardNo" from="patientCardNo" mode="system" type="string" description="就诊卡号"></return>
+            <return to="terminalIp" from="terminalIp" mode="system" type="string" description="终端Ip"></return>
+        </returns>
+    </method>
+    <method name="PatientCardRefund" call="PatientCardRefund" log="true" description="PatientCardRefund:就诊卡退款（转账银行卡）">
+        <params>
+            <param to="patientCardNo" from="patientCardNo" mode="system" type="string" description="就诊卡号"></param>
+            <param to="cardPassword" from="cardPassword" mode="system" type="string" description="卡密码（需要传入时不为空）"></param>
+            <param to="bankCardNo" from="bankCardNo" mode="system" type="string" description="银行卡号（需要传入时不为空）"></param>
+            <param to="bankTrace" from="bankTrace" mode="system" type="string" description="银行交易流水号（预生成）"></param>
+            <param to="amt" from="amt" mode="system" type="string" description="金额（单位：元）"></param>
+            <param to="tradeDate" from="tradeDate" mode="system" type="string" description="交易日期（yyyyMMdd）"></param>
+            <param to="tradeTime" from="tradeTime" mode="system" type="string" description="交易时间（yyyy-MM-dd HH:mm:ss）"></param>
+            <param to="trace" from="trace" mode="system" type="string" description="流水号（yyyyMMddHHmmss+8位终端号）"></param>
+            <param to="operatorId" from="operatorId" mode="system" type="string" description="操作员号"></param>
+            <param to="terminalIp" from="terminalIp" mode="system" type="string" description="终端Ip"></param>
+        </params>
+        <returns>
+            <return to="patientCardNo" from="patientCardNo" mode="system" type="string" description="就诊卡号"></return>
+            <return to="cardPassword" from="cardPassword" mode="system" type="string" description="卡密码（需要传入时不为空）"></return>
+            <return to="bankCardNo" from="bankCardNo" mode="system" type="string" description="银行卡号（需要传入时不为空）"></return>
+            <return to="bankTrace" from="bankTrace" mode="system" type="string" description="银行交易流水号（预生成）"></return>
+            <return to="amt" from="amt" mode="system" type="string" description="金额（单位：元）"></return>
+            <return to="tradeDate" from="tradeDate" mode="system" type="string" description="交易日期（yyyyMMdd）"></return>
+            <return to="tradeTime" from="tradeTime" mode="system" type="string" description="交易时间（yyyy-MM-dd HH:mm:ss）"></return>
+            <return to="trace" from="trace" mode="system" type="string" description="流水号（yyyyMMddHHmmss+8位终端号）"></return>
+            <return to="operatorId" from="operatorId" mode="system" type="string" description="操作员号"></return>
+            <return to="terminalIp" from="terminalIp" mode="system" type="string" description="终端Ip"></return>
+        </returns>
+    </method>
+    <method name="PatientCardRefundReverse" call="PatientCardRefundReverse" log="true" description="PatientCardRefundReverse:就诊卡退款冲正（转账银行卡失败时冲正）">
+        <params>
+            <param to="patientCardNo" from="patientCardNo" mode="system" type="string" description="就诊卡号"></param>
+            <param to="bankCardNo" from="bankCardNo" mode="system" type="string" description="银行卡号（需要传入时不为空）"></param>
+            <param to="bankTrace" from="bankTrace" mode="system" type="string" description="银行交易流水号"></param>
+            <param to="referenceNo" from="referenceNo" mode="system" type="string" description="银行交易流水号"></param>
+            <param to="tradeDate" from="tradeDate" mode="system" type="string" description="交易日期（yyyyMMdd）"></param>
+            <param to="tradeTime" from="tradeTime" mode="system" type="string" description="交易时间（yyyy-MM-dd HH:mm:ss）"></param>
+            <param to="HisTrace" from="HisTrace" mode="system" type="string" description="His上次退款交易流水号"></param>
+            <param to="trace" from="trace" mode="system" type="string" description="流水号（yyyyMMddHHmmss+8位终端号）"></param>
+            <param to="operatorId" from="operatorId" mode="system" type="string" description="操作员号"></param>
+            <param to="terminalIp" from="terminalIp" mode="system" type="string" description="终端Ip"></param>
+        </params>
+        <returns>
+            <return to="patientCardNo" from="patientCardNo" mode="system" type="string" description="就诊卡号"></return>
+            <return to="bankCardNo" from="bankCardNo" mode="system" type="string" description="银行卡号（需要传入时不为空）"></return>
+            <return to="bankTrace" from="bankTrace" mode="system" type="string" description="银行交易流水号"></return>
+            <return to="referenceNo" from="referenceNo" mode="system" type="string" description="银行交易流水号"></return>
+            <return to="tradeDate" from="tradeDate" mode="system" type="string" description="交易日期（yyyyMMdd）"></return>
+            <return to="tradeTime" from="tradeTime" mode="system" type="string" description="交易时间（yyyy-MM-dd HH:mm:ss）"></return>
+            <return to="HisTrace" from="HisTrace" mode="system" type="string" description="His上次退款交易流水号"></return>
+            <return to="trace" from="trace" mode="system" type="string" description="流水号（yyyyMMddHHmmss+8位终端号）"></return>
+            <return to="operatorId" from="operatorId" mode="system" type="string" description="操作员号"></return>
+            <return to="terminalIp" from="terminalIp" mode="system" type="string" description="终端Ip"></return>
+        </returns>
+    </method>
+    <method name="GetPatientCardTradeRecord" call="QueryBalanceRecord" log="true" description="GetPatientCardTradeRecord:查询就诊卡交易明细记录">
+        <params>
+            <param to="patientCardNo" from="patientCardNo" mode="system" type="string" description="就诊卡号"></param>
+        </params>
+        <returns>
+            <return to="支付方式" from="PayMode" mode="system" type="string" description=""></return>
+            <return to="充值金额" from="Money" mode="system" type="string" description=""></return>
+            <return to="交易流水号" from="ReceiptNo" mode="system" type="string" description=""></return>
+            <return to="充值日期" from="DateTime" mode="system" type="string" description=""></return>
+            <return to="终端号" from="UserID" mode="system" type="string" description=""></return>
+        </returns>
+    </method>
+    <method name="GetPatientCardOriginalTradeRecord" call="GetPatientCardOriginalTradeRecord" log="true" description="GetPatientCardOriginalTradeRecord:查询就诊卡单笔原交易明细记录（验证His是否到账）">
+        <params>
+            <param to="patientCardNo" from="patientCardNo" mode="system" type="string" description="就诊卡号"></param>
+            <param to="terminalTrace" from="terminalTrace" mode="system" type="string" description="终端交易流水号"></param>
+            <param to="terminalIp" from="terminalIp" mode="system" type="string" description="终端Ip"></param>
+        </params>
+        <returns>
+            <return to="patientCardNo" from="patientCardNo" mode="system" type="string" description="就诊卡号"></return>
+            <return to="terminalTrace" from="terminalTrace" mode="system" type="string" description="终端交易流水号"></return>
+            <return to="terminalIp" from="terminalIp" mode="system" type="string" description="终端Ip"></return>
+        </returns>
+    </method>
+
+    <method name="GetTerminalTradeRecord" call="GetTerminalTradeRecord" log="true" description="GetTerminalTradeRecord:查询自助机交易明细记录">
+        <params>
+            <param to="" from=""/>
+        </params>
+        <returns>
+            <return to="" from=""/>
+        </returns>
+    </method>
+
+    <method name="GetTerminalTradeRecordSummary" call="GetTerminalTradeRecordSummary" log="true" description="GetTerminalTradeRecordSummary:自助机交易记录汇总查询">
+        <params>
+            <param to="startTime" from="startTime" mode="system" type="string" description="开始时间"></param>
+            <param to="endTime" from="endTime" mode="system" type="string" description="结束时间"></param>
+            <param to="terminalIp" from="terminalIp" mode="system" type="string" description="终端Ip"></param>
+        </params>
+        <returns>
+            <return to="startTime" from="startTime" mode="system" type="string" description="开始时间"></return>
+            <return to="endTime" from="endTime" mode="system" type="string" description="结束时间"></return>
+            <return to="terminalIp" from="terminalIp" mode="system" type="string" description="终端Ip"></return>
+        </returns>
+    </method>
+    <!--当日挂号-->
+    <method name="GetRealTimeDepartmentSchedule" call="GetRealTimeDepartmentSchedule" log="true" description="GetRealTimeDepartmentSchedule:获取当日实时科室排班表">
+        <params>
+            <param to="操作员" from="operatorId" mode="system" type="string" description="操作员"></param>
+            <param to="终端Ip" from="terminalIp" mode="system" type="string" description="终端Ip"></param>
+        </params>
+        <returns>
+            <return to="操作员" from="operatorId" mode="system" type="string" description="操作员"></return>
+            <return to="终端Ip" from="terminalIp" mode="system" type="string" description="终端Ip"></return>
+        </returns>
+    </method>
+    <method name="GetRealTimeDoctorSchedule" call="GetRealTimeDoctorSchedule" log="true" description="GetRealTimeDoctorSchedule:获取当日实时医生排班表">
+        <params>
+            <param to="departmentId" from="departmentId" mode="system" type="string" description="科室编号"></param>
+            <param to="operatorId" from="operatorId" mode="system" type="string" description="操作员"></param>
+            <param to="terminalIp" from="terminalIp" mode="system" type="string" description="终端Ip"></param>
+        </params>
+        <returns>
+            <return to="departmentId" from="departmentId" mode="system" type="string" description="科室编号"></return>
+            <return to="operatorId" from="operatorId" mode="system" type="string" description="操作员"></return>
+            <return to="terminalIp" from="terminalIp" mode="system" type="string" description="终端Ip"></return>
+        </returns>
+    </method>
+    <method name="RealTimeRegister" call="RealTimeRegister" log="true" description="RealTimeRegister:挂号">
+        <params>
+            <param to="patientCardId" from="patientCardNo" mode="system" type="string" description="就诊卡号"></param>
+            <param to="registerTime" from="registerTime" mode="system" type="string" description="挂号时间（yyyy-MM-dd HH:mm:ss）"></param>
+            <param to="departmentCode" from="departmentId" mode="system" type="string" description="挂号科室编号"></param>
+            <param to="doctorId" from="doctorId" mode="system" type="string" description="挂号医生编号"></param>
+            <param to="emptitleid" from="emptitleid" mode="system" type="string" description="终端Ip"></param>
+            <param to="workType" from="workType" mode="system" type="string" description="班次"></param>
+            <param to="registerFee" from="registerFee" mode="system" type="string" description="挂号费"></param>
+            <param to="diagnosisCost" from="diagnosisCost" mode="system" type="string" description="诊疗费"></param>
+            <param to="feeCost" from="feeCost" mode="system" type="string" description="工本费"></param>
+            <param to="checkCost" from="checkCost" mode="system" type="string" description="检查费"></param>
+            <param to="totalCost" from="totalCost" mode="system" type="string" description="总费用"></param>
+            <param to="trace" from="trace" mode="system" type="string" description="流水号（yyyyMMddHHmmss+8位终端号）"></param>
+            <param to="bankCardNo" from="bankCardNo" mode="system" type="string" description="银行卡号（需要传入时不为空）"></param>
+            <param to="bankTrace" from="bankTrace" mode="system" type="string" description="银行交易流水号"></param>
+            <param to="referenceNo" from="referenceNo" mode="system" type="string" description="银行参考号"></param>
+            <param to="operatorId" from="operatorId" mode="system" type="string" description="操作员号"></param>
+            <param to="terminalIp" from="terminalIp" mode="system" type="string" description="终端Ip"></param>
+        </params>
+        <returns>
+            <return to="resultCode" from="resultCode" mode="system" type="string" description="返回代码"></return>
+            <return to="resultMsg" from="resultMsg" mode="system" type="string" description="返回结果"></return>
+            <return to="挂号号" from="挂号号" mode="system" type="string" description="就诊卡号"></return>
+            <return to="排队号" from="排队号" mode="system" type="string" description="挂号时间（yyyy-MM-dd HH:mm:ss）"></return>
+            <return to="His交易流水号" from="His交易流水号" mode="system" type="string" description="挂号科室编号"></return>
+            <return to="就诊卡余额" from="就诊卡余额" mode="system" type="string" description="挂号医生编号"></return>
+            <return to="科室类别" from="科室类别" mode="system" type="string" description="终端Ip"></return>
+            <return to="科室名称" from="科室名称" mode="system" type="string" description="班次"></return>
+            <return to="病区" from="病区" mode="system" type="string" description="挂号费"></return>
+            <return to="科室位置" from="科室位置" mode="system" type="string" description="诊疗费"></return>
+            <return to="诊室" from="诊室" mode="system" type="string" description="工本费"></return>
+            <return to="医生姓名" from="医生姓名" mode="system" type="string" description="检查费"></return>
+            <return to="挂号级别" from="挂号级别" mode="system" type="string" description="总费用"></return>
+            <return to="班次" from="班次" mode="system" type="string" description="流水号（yyyyMMddHHmmss+8位终端号）"></return>
+            <return to="挂号费" from="挂号费" mode="system" type="string" description="银行卡号（需要传入时不为空）"></return>
+            <return to="诊疗费" from="诊疗费" mode="system" type="string" description="银行交易流水号"></return>
+            <return to="工本费" from="工本费" mode="system" type="string" description="银行参考号"></return>
+            <return to="检查费" from="检查费" mode="system" type="string" description="操作员号"></return>
+            <return to="总费用" from="总费用" mode="system" type="string" description="终端Ip"></return>
+            <return to="总金额" from="总金额" mode="system" type="string" description="终端Ip"></return>
+        </returns>
+    </method>
+    <method name="GetRegisterInfo" call="GetRegisterInfo" log="true" description="GetRegisterInfo:获取挂号信息">
+        <params>
+            <param to="patientCardNo" from="patientCardNo" mode="system" type="string" description="就诊卡号"></param>
+            <param to="terminalIp" from="terminalIp" mode="system" type="string" description="终端Ip"></param>
+        </params>
+        <returns>
+            <return to="patientCardNo" from="patientCardNo" mode="system" type="string" description="就诊卡号"></return>
+            <return to="terminalIp" from="terminalIp" mode="system" type="string" description="终端Ip"></return>
+        </returns>
+    </method>
+    <method name="BackNumber" call="BackNumber" log="true" description="BackNumber:退号">
+        <params>
+            <param to="patientCardNo" from="patientCardNo" mode="system" type="string" description="就诊卡号"></param>
+            <param to="registerId" from="registerId" mode="system" type="string" description="挂号号"></param>
+            <param to="operateTime" from="operateTime" mode="system" type="string" description="操作时间（yyyy-MM-dd HH:mm:ss）"></param>
+            <param to="operatorId" from="operatorId" mode="system" type="string" description="操作员号"></param>
+            <param to="terminalIp" from="terminalIp" mode="system" type="string" description="终端Ip"></param>
+        </params>
+        <returns>
+            <return to="patientCardNo" from="patientCardNo" mode="system" type="string" description="就诊卡号"></return>
+            <return to="registerId" from="registerId" mode="system" type="string" description="挂号号"></return>
+            <return to="operateTime" from="operateTime" mode="system" type="string" description="操作时间（yyyy-MM-dd HH:mm:ss）"></return>
+            <return to="operatorId" from="operatorId" mode="system" type="string" description="操作员号"></return>
+            <return to="terminalIp" from="terminalIp" mode="system" type="string" description="终端Ip"></return>
+        </returns>
+    </method>
+    <!--预约挂号/取号-->
+    <method name="GetReservationDepartmentSchedule" call="GetReservationDepartmentSchedule" log="true" description="GetReservationDepartmentSchedule:获取预约科室排班表">
+        <params>
+            <param to="startTime" from="startTime" mode="system" type="string" description="开始时间"></param>
+            <param to="endTime" from="endTime" mode="system" type="string" description="结束时间"></param>
+            <param to="operatorId" from="operatorId" mode="system" type="string" description="操作员"></param>
+            <param to="terminalIp" from="terminalIp" mode="system" type="string" description="终端Ip"></param>
+        </params>
+        <returns>
+            <return to="startTime" from="startTime" mode="system" type="string" description="开始时间"></return>
+            <return to="endTime" from="endTime" mode="system" type="string" description="结束时间"></return>
+            <return to="operatorId" from="operatorId" mode="system" type="string" description="操作员"></return>
+            <return to="terminalIp" from="terminalIp" mode="system" type="string" description="终端Ip"></return>
+        </returns>
+    </method>
+    <method name="GetReservationDoctorSchedule" call="GetReservationDoctorSchedule" log="true" description="GetReservationDoctorSchedule:获取预约医生排班表">
+        <params>
+            <param to="departmentId" from="departmentId" mode="system" type="string" description="科室编号"></param>
+            <param to="startTime" from="startTime" mode="system" type="string" description="开始时间"></param>
+            <param to="endTime" from="endTime" mode="system" type="string" description="结束时间"></param>
+            <param to="operatorId" from="operatorId" mode="system" type="string" description="操作员"></param>
+            <param to="terminalIp" from="terminalIp" mode="system" type="string" description="终端Ip"></param>
+        </params>
+        <returns>
+            <return to="departmentId" from="departmentId" mode="system" type="string" description="科室编号"></return>
+            <return to="startTime" from="startTime" mode="system" type="string" description="开始时间"></return>
+            <return to="endTime" from="endTime" mode="system" type="string" description="结束时间"></return>
+            <return to="operatorId" from="operatorId" mode="system" type="string" description="操作员"></return>
+            <return to="terminalIp" from="terminalIp" mode="system" type="string" description="终端Ip"></return>
+        </returns>
+    </method>
+    <method name="ReservationRegister" call="ReservationRegister" log="true" description="ReservationRegister:预约挂号">
+        <params>
+            <param to="patientCardNo" from="patientCardNo" mode="system" type="string" description="就诊卡号"></param>
+            <param to="registerTime" from="registerTime" mode="system" type="string" description="挂号时间（yyyy-MM-dd HH:mm:ss）"></param>
+            <param to="departmentId" from="departmentId" mode="system" type="string" description="挂号科室编号"></param>
+            <param to="doctorId" from="doctorId" mode="system" type="string" description="挂号医生编号"></param>
+            <param to="workType" from="workType" mode="system" type="string" description="班次"></param>
+            <param to="bespeakFee" from="bespeakFee" mode="system" type="string" description="预约金"></param>
+            <param to="registerFee" from="registerFee" mode="system" type="string" description="挂号费"></param>
+            <param to="diagnosisCost" from="diagnosisCost" mode="system" type="string" description="诊疗费"></param>
+            <param to="feeCost" from="feeCost" mode="system" type="string" description="工本费"></param>
+            <param to="checkCost" from="checkCost" mode="system" type="string" description="检查费"></param>
+            <param to="totalCost" from="totalCost" mode="system" type="string" description="总费用"></param>
+            <param to="operatorId" from="operatorId" mode="system" type="string" description="操作员号"></param>
+            <param to="terminalIp" from="terminalIp" mode="system" type="string" description="终端Ip"></param>
+        </params>
+        <returns>
+            <return to="patientCardNo" from="patientCardNo" mode="system" type="string" description="就诊卡号"></return>
+            <return to="registerTime" from="registerTime" mode="system" type="string" description="挂号时间（yyyy-MM-dd HH:mm:ss）"></return>
+            <return to="departmentId" from="departmentId" mode="system" type="string" description="挂号科室编号"></return>
+            <return to="doctorId" from="doctorId" mode="system" type="string" description="挂号医生编号"></return>
+            <return to="workType" from="workType" mode="system" type="string" description="班次"></return>
+            <return to="bespeakFee" from="bespeakFee" mode="system" type="string" description="预约金"></return>
+            <return to="registerFee" from="registerFee" mode="system" type="string" description="挂号费"></return>
+            <return to="diagnosisCost" from="diagnosisCost" mode="system" type="string" description="诊疗费"></return>
+            <return to="feeCost" from="feeCost" mode="system" type="string" description="工本费"></return>
+            <return to="checkCost" from="checkCost" mode="system" type="string" description="检查费"></return>
+            <return to="totalCost" from="totalCost" mode="system" type="string" description="总费用"></return>
+            <return to="operatorId" from="operatorId" mode="system" type="string" description="操作员号"></return>
+            <return to="terminalIp" from="terminalIp" mode="system" type="string" description="终端Ip"></return>
+        </returns>
+    </method>
+    <method name="GetReservationList" call="GetReservationList" log="true" description="GetReservationList:获取预约信息列表">
+        <params>
+            <param to="patientCardNo" from="patientCardNo" mode="system" type="string" description="就诊卡号"></param>
+            <param to="terminalIp" from="terminalIp" mode="system" type="string" description="终端Ip"></param>
+        </params>
+        <returns>
+            <return to="patientCardNo" from="patientCardNo" mode="system" type="string" description="就诊卡号"></return>
+            <return to="terminalIp" from="terminalIp" mode="system" type="string" description="终端Ip"></return>
+        </returns>
+    </method>
+    <method name="ReservationRegisterConfirm" call="ReservationRegisterConfirm" log="true" description="ReservationRegisterConfirm:预约信息确认">
+        <params>
+            <param to="patientCardNo" from="patientCardNo" mode="system" type="string" description="就诊卡号"></param>
+            <param to="bespeakId" from="bespeakId" mode="system" type="string" description="预约编号"></param>
+            <param to="operateTime" from="operateTime" mode="system" type="string" description="操作时间（yyyy-MM-dd HH:mm:ss）"></param>
+            <param to="operatorId" from="operatorId" mode="system" type="string" description="操作员号"></param>
+            <param to="terminalIp" from="terminalIp" mode="system" type="string" description="终端Ip"></param>
+        </params>
+        <returns>
+            <return to="patientCardNo" from="patientCardNo" mode="system" type="string" description="就诊卡号"></return>
+            <return to="bespeakId" from="bespeakId" mode="system" type="string" description="预约编号"></return>
+            <return to="operateTime" from="operateTime" mode="system" type="string" description="操作时间（yyyy-MM-dd HH:mm:ss）"></return>
+            <return to="operatorId" from="operatorId" mode="system" type="string" description="操作员号"></return>
+            <return to="terminalIp" from="terminalIp" mode="system" type="string" description="终端Ip"></return>
+        </returns>
+    </method>
+    <method name="ReservationRegisterCancel" call="ReservationRegisterCancel" log="true" description="ReservationRegisterCancel:预约信息取消">
+        <params>
+            <param to="patientCardNo" from="patientCardNo" mode="system" type="string" description="就诊卡号"></param>
+            <param to="bespeakId" from="bespeakId" mode="system" type="string" description="预约编号"></param>
+            <param to="operateTime" from="operateTime" mode="system" type="string" description="操作时间（yyyy-MM-dd HH:mm:ss）"></param>
+            <param to="operatorId" from="operatorId" mode="system" type="string" description="操作员号"></param>
+            <param to="terminalIp" from="terminalIp" mode="system" type="string" description="终端Ip"></param>
+        </params>
+        <returns>
+            <return to="patientCardNo" from="patientCardNo" mode="system" type="string" description="就诊卡号"></return>
+            <return to="bespeakId" from="bespeakId" mode="system" type="string" description="预约编号"></return>
+            <return to="operateTime" from="operateTime" mode="system" type="string" description="操作时间（yyyy-MM-dd HH:mm:ss）"></return>
+            <return to="operatorId" from="operatorId" mode="system" type="string" description="操作员号"></return>
+            <return to="terminalIp" from="terminalIp" mode="system" type="string" description="终端Ip"></return>
+        </returns>
+    </method>
+    <!--缴费-->
+    <method name="GetPrescriptionList" call="GetPrescriptionList" log="true" description="GetPrescriptionList:获取需要缴费的处方列表">
+        <params>
+            <param to="patientCardId" from="patientCardNo" mode="system" type="string" description="就诊卡号"></param>
+            <param to="startTime" from="startTime" mode="system" type="string" description="开始时间"></param>
+            <param to="endTime" from="endTime" mode="system" type="string" description="结束时间"></param>
+            <param to="terminalIp" from="terminalIp" mode="system" type="string" description="终端Ip"></param>
+        </params>
+        <returns>
+            <return to="patientCardId" from="patientCardId" mode="system" type="string" description="就诊卡号"></return>
+            <return to="startTime" from="startTime" mode="system" type="string" description="开始时间"></return>
+            <return to="endTime" from="endTime" mode="system" type="string" description="结束时间"></return>
+            <return to="terminalIp" from="terminalIp" mode="system" type="string" description="终端Ip"></return>
+        </returns>
+    </method>
+    <method name="GetPrescriptionInfo" call="GetPrescriptionInfo" log="true" description="GetPrescriptionInfo:获取需要缴费的处方信息">
+        <params>
+            <param to="patientCardNo" from="patientCardNo" mode="system" type="string" description="就诊卡号"></param>
+            <param to="startTime" from="startTime" mode="system" type="string" description="开始时间"></param>
+            <param to="endTime" from="endTime" mode="system" type="string" description="结束时间"></param>
+            <param to="prescriptionId" from="prescriptionId" mode="system" type="string" description="处方号/门诊号"></param>
+            <param to="terminalIp" from="terminalIp" mode="system" type="string" description="终端Ip"></param>
+        </params>
+        <returns>
+            <return to="patientCardNo" from="patientCardNo" mode="system" type="string" description="就诊卡号"></return>
+            <return to="startTime" from="startTime" mode="system" type="string" description="开始时间"></return>
+            <return to="endTime" from="endTime" mode="system" type="string" description="结束时间"></return>
+            <return to="prescriptionId" from="prescriptionId" mode="system" type="string" description="处方号/门诊号"></return>
+            <return to="terminalIp" from="terminalIp" mode="system" type="string" description="终端Ip"></return>
+        </returns>
+    </method>
+    <method name="PayConfirm" call="PayConfirm" log="true" description="PayConfirm:缴费">
+        <params>
+            <param to="patientCardNo" from="patientCardNo" mode="system" type="string" description="就诊卡号"></param>
+            <param to="cardPassword" from="cardPassword" mode="system" type="string" description="卡密码（需要传入时不为空）"></param>
+            <param to="prescriptionId" from="prescriptionId" mode="system" type="string" description="处方号/门诊号"></param>
+            <param to="amt" from="amt" mode="system" type="string" description="金额（需要传入时不为空）"></param>
+            <param to="prescriptionContent" from="prescriptionContent" mode="system" type="string" description="处方内容(依据His需要格式)"></param>
+            <param to="operateTime" from="operateTime" mode="system" type="string" description="操作时间（yyyy-MM-dd HH:mm:ss）"></param>
+            <param to="operatorId" from="operatorId" mode="system" type="string" description="操作员号"></param>
+            <param to="terminalIp" from="terminalIp" mode="system" type="string" description="终端Ip"></param>
+        </params>
+        <returns>
+            <return to="patientCardNo" from="patientCardNo" mode="system" type="string" description="就诊卡号"></return>
+            <return to="cardPassword" from="cardPassword" mode="system" type="string" description="卡密码（需要传入时不为空）"></return>
+            <return to="prescriptionId" from="prescriptionId" mode="system" type="string" description="处方号/门诊号"></return>
+            <return to="amt" from="amt" mode="system" type="string" description="金额（需要传入时不为空）"></return>
+            <return to="prescriptionContent" from="prescriptionContent" mode="system" type="string" description="处方内容(依据His需要格式)"></return>
+            <return to="operateTime" from="operateTime" mode="system" type="string" description="操作时间（yyyy-MM-dd HH:mm:ss）"></return>
+            <return to="operatorId" from="operatorId" mode="system" type="string" description="操作员号"></return>
+            <return to="terminalIp" from="terminalIp" mode="system" type="string" description="终端Ip"></return>
+        </returns>
+    </method>
+    <method name="GetPatientCardFeesDetail" call="QueryFeeDetailRecord" log="true" description="GetPatientCardFeesDetail:获取就诊卡费用明细">
+        <params>
+            <param to="patientCardNo" from="patientCardNo" mode="system" type="string" description="就诊卡号"></param>
+            <param to="startTime" from="startTime" mode="system" type="string" description="开始时间"></param>
+            <param to="endTime" from="endTime" mode="system" type="string" description="结束时间"></param>
+        </params>
+        <returns>
+            <return to="时间" from="FeeDate" mode="system" type="string" description=""></return>
+            <return to="流水号" from="ReceiptNo" mode="system" type="string" description=""></return>
+            <return to="名称" from="ItemName" mode="system" type="string" description=""></return>
+            <return to="规格" from="ItemSpecs" mode="system" type="string" description=""></return>
+            <return to="数量" from="ItemQty" mode="system" type="string" description=""></return>
+            <return to="单位" from="ItemUnit" mode="system" type="string" description=""></return>
+            <return to="金额" from="Cost" mode="system" type="string" description=""></return>
+        </returns>
+    </method>
+    <!--查询-->
+    <method name="GetHospitalInfo" call="GetHospitalInfo" log="true" description="GetHospitalInfo:医院简介">
+        <params>
+            <param to="terminalIp" from="terminalIp" mode="system" type="string" description="终端Ip"></param>
+        </params>
+        <returns>
+            <return to="terminalIp" from="terminalIp" mode="system" type="string" description="终端Ip"></return>
+        </returns>
+    </method>
+    <method name="GetDepartmentInfo" call="GetDepartmentInfo" log="true" description="GetDepartmentInfo:科室简介">
+        <params>
+            <param to="terminalIp" from="terminalIp" mode="system" type="string" description="终端Ip"></param>
+        </params>
+        <returns>
+            <return to="terminalIp" from="terminalIp" mode="system" type="string" description="终端Ip"></return>
+        </returns>
+    </method>
+    <method name="GetExpertInfo" call="GetExpertInfo" log="true" description="GetExpertInfo:专家简介">
+        <params>
+            <param to="department" from="department" mode="system" type="string" description="科室"></param>
+            <param to="terminalIp" from="terminalIp" mode="system" type="string" description="终端Ip"></param>
+        </params>
+        <returns>
+            <return to="department" from="department" mode="system" type="string" description="科室"></return>
+            <return to="terminalIp" from="terminalIp" mode="system" type="string" description="终端Ip"></return>
+        </returns>
+    </method>
+    <method name="GetDrugType" call="GetDrugType" log="true" description="GetDrugType:查询药品类别">
+        <params>
+            <param to="terminalIp" from="terminalIp" mode="system" type="string" description="终端Ip"></param>
+        </params>
+        <returns>
+            <return to="terminalIp" from="terminalIp" mode="system" type="string" description="终端Ip"></return>
+        </returns>
+    </method>
+    <method name="GetWindowOrder" call="GetWindowOrder" log="true" description="GetWindowOrder:查询发药窗口">
+        <params>
+            <param to="typeId" from="typeId" mode="system" type="string" description="类别编号"></param>
+            <param to="pinyinCode" from="pinyinCode" mode="system" type="string" description="拼音码"></param>
+            <param to="startIndex" from="startIndex" mode="system" type="string" description="起始行"></param>
+            <param to="count" from="count" mode="system" type="string" description="数量"></param>
+            <param to="terminalIp" from="terminalIp" mode="system" type="string" description="终端Ip"></param>
+        </params>
+        <returns>
+            <return to="typeId" from="typeId" mode="system" type="string" description="类别编号"></return>
+            <return to="pinyinCode" from="pinyinCode" mode="system" type="string" description="拼音码"></return>
+            <return to="startIndex" from="startIndex" mode="system" type="string" description="起始行"></return>
+            <return to="count" from="count" mode="system" type="string" description="数量"></return>
+            <return to="terminalIp" from="terminalIp" mode="system" type="string" description="终端Ip"></return>
+        </returns>
+    </method>
+    <method name="GetDrugInfo" call="QueryDrug" log="true" description="GetDrugInfo:查询药品信息">
+        <params>
+            <param to="sm" from="sm" mode="system" type="string" description="拼音码"></param>
+        </params>
+        <returns>
+            <return to="ypid" from="ypid" mode="system" type="string" description="药品编号（查询比例用）"></return>
+            <return to="名称" from="ym" mode="system" type="string" description="拼音码"></return>
+            <return to="住院规格" from="zyyfgg" mode="system" type="string" description=""></return>
+            <return to="门诊规格" from="mzyfgg" mode="system" type="string" description=""></return>
+            <return to="住院单价" from="zylsj" mode="system" type="string" description=""></return>
+            <return to="门诊单价" from="mzlsj" mode="system" type="string" description=""></return>
+            <return to="拼音码" from="sm" mode="system" type="string" description=""></return>
+        </returns>
+    </method>
+    <method name="GetDrugYbbl" call="QueryDrugYbbl" log="true" description="GetDrugInfo:查询药品信息">
+        <params>
+            <param to="ypid" from="ypid" mode="system" type="string" description="拼音码"></param>
+        </params>
+        <returns>
+            <return to="ypid" from="ypid" mode="system" type="string" description="药品编号（查询比例用）"></return>
+            <return to="药名" from="ym" mode="system" type="string" description="拼音码"></return>
+            <return to="医保类别" from="yblb" mode="system" type="string" description=""></return>
+            <return to="自付比例" from="zfbl" mode="system" type="string" description=""></return>
+            <return to="备注" from="sm" mode="system" type="string" description=""></return>
+        </returns>
+    </method>
+    <method name="GetMedicalServicesType" call="GetMedicalServicesType" log="true" description="GetMedicalServicesType:查询诊疗服务项目类别">
+        <params>
+            <param to="terminalIp" from="terminalIp" mode="system" type="string" description="终端Ip"></param>
+        </params>
+        <returns>
+            <return to="terminalIp" from="terminalIp" mode="system" type="string" description="终端Ip"></return>
+        </returns>
+    </method>
+    <method name="GetMedicalServicesInfo" call="QueryZlxm" log="true" description="GetMedicalServicesInfo:查询诊疗服务项目信息">
+        <params>
+            <param to="typeId" from="typeId" mode="system" type="string" description="类别编号"></param>
+        </params>
+        <returns>
+            <return to="ypid" from="ypid" mode="system" type="string" description=""></return>
+            <return to="名称" from="ym" mode="system" type="string" description=""></return>
+            <return to="单价" from="lsj" mode="system" type="string" description=""></return>
+            <return to="拼音码" from="sm" mode="system" type="string" description=""></return>
+        </returns>
+    </method>
+    <!--检验单-->
+    <method name="GetReportList" call="QueryLisReport" log="true" description="GetReportList:获取检验单列表">
+        <params>
+            <param to="patientCardNo" from="patientCardNo" mode="system" type="string" description="就诊卡号"></param>
+        </params>
+        <returns>
+            <return to="检查号" from="reportid" mode="system" type="string" description="检查号"></return>
+            <return to="条形码" from="barcode" mode="system" type="string" description=""></return>
+            <return to="项目名称" from="req_reason" mode="system" type="string" description="检查项目"></return>
+
+            <return to="报告日期" from="report_dt" mode="system" type="string" description="检查日期"></return>
+
+            <return to="姓名" from="pat_name" mode="system" type="string" description=""></return>
+            <return to="性别" from="pat_sex" mode="system" type="string" description=""></return>
+            <return to="年龄" from="pat_age" mode="system" type="string" description=""></return>
+            <return to="病历号" from="blh" mode="system" type="string" description=""></return>
+            <return to="床号" from="ch" mode="system" type="string" description=""></return>
+            <return to="病人类型" from="brlx" mode="system" type="string" description=""></return>
+            <return to="送检科室" from="sjks" mode="system" type="string" description=""></return>
+            <return to="送检医生" from="sjys" mode="system" type="string" description=""></return>
+
+            <return to="送检日期" from="sjrq" mode="system" type="string" description=""></return>
+
+            <return to="检验日期" from="jyrq" mode="system" type="string" description=""></return>
+
+            <return to="检验者" from="report_username" mode="system" type="string" description=""></return>
+            <return to="审核者" from="rechk_username" mode="system" type="string" description=""></return>
+            <return to="reportkind" from="reportkind" mode="system" type="string" description=""></return>
+            <return to="req_dt" from="req_dt" mode="system" type="string" description=""></return>
+            <return to="标本号" from="sampleno" mode="system" type="string" description=""></return>
+            <return to="标本类别" from="specimen_name" mode="system" type="string" description=""></return>
+            <return to="打印次数" from="print_count" mode="system" type="string" description=""></return>
+            <return to="打印时间" from="lastprint_dt" mode="system" type="string" description=""></return>
+        </returns>
+    </method>
+    <method name="GetReportItems" call="QueryLisResult" log="true" description="GetReportItems:获取检验单项目结果">
+        <params>
+            <param to="patientCardNo" from="patientCardNo" mode="system" type="string" description="就诊卡号"></param>
+        </params>
+        <returns>
+            <return to="报告单编号" from="reportid" mode="system" type="string" description=""></return>
+            <return to="姓名" from="pat_name" mode="system" type="string" description=""></return>
+            <return to="项目名称" from="req_itemname" mode="system" type="string" description=""></return>
+            <return to="sortno" from="rpt_itemid" mode="system" type="string" description=""></return>
+            <return to="rpt_itemid" from="rpt_itemcode" mode="system" type="string" description=""></return>
+            <return to="chinese_name" from="rpt_itemname" mode="system" type="string" description=""></return>
+            <return to="quantitative_result" from="result_str" mode="system" type="string" description=""></return>
+            <return to="test_item_unit" from="result_unit" mode="system" type="string" description=""></return>
+            <return to="test_item_reference" from="result_ref" mode="system" type="string" description=""></return>
+
+        </returns>
+    </method>
+    <method name="UpdateReportPrintState" call="UpdateReportPrintState" log="true" description="UpdateReportPrintState:更新检验单打印状态">
+        <params>
+            <param to="patientCardNo" from="patientCardNo" mode="system" type="string" description="就诊卡号"></param>
+            <param to="reportId" from="reportId" mode="system" type="string" description="报告单号"></param>
+            <param to="terminalIp" from="terminalIp" mode="system" type="string" description="终端Ip"></param>
+        </params>
+        <returns>
+            <return to="patientCardNo" from="patientCardNo" mode="system" type="string" description="就诊卡号"></return>
+            <return to="reportId" from="reportId" mode="system" type="string" description="报告单号"></return>
+            <return to="terminalIp" from="terminalIp" mode="system" type="string" description="终端Ip"></return>
+        </returns>
+    </method>
+    <method name="GetDocSignature" call="GetDocSignature" log="true" description="GetDocSignature:获取医生签名">
+        <params>
+            <param to="doctorId" from="doctorId" mode="system" type="string" description="医生编号"></param>
+            <param to="terminalIp" from="terminalIp" mode="system" type="string" description="终端Ip"></param>
+        </params>
+        <returns>
+            <return to="doctorId" from="doctorId" mode="system" type="string" description="医生编号"></return>
+            <return to="terminalIp" from="terminalIp" mode="system" type="string" description="终端Ip"></return>
+        </returns>
+    </method>
+    <method name="GetReportImage" call="GetReportImage" log="true" description="GetReportImage:获取检验单图像">
+        <params>
+            <param to="patientCardNo" from="patientCardNo" mode="system" type="string" description="就诊卡号"></param>
+            <param to="reportId" from="reportId" mode="system" type="string" description="报告单号"></param>
+            <param to="terminalIp" from="terminalIp" mode="system" type="string" description="终端Ip"></param>
+        </params>
+        <returns>
+            <return to="patientCardNo" from="patientCardNo" mode="system" type="string" description="就诊卡号"></return>
+            <return to="reportId" from="reportId" mode="system" type="string" description="报告单号"></return>
+            <return to="terminalIp" from="terminalIp" mode="system" type="string" description="终端Ip"></return>
+        </returns>
+    </method>
+    <method name="GetPayedList" call="GetPayedList" log="true" description="GetPayedList:获取消费明细">
+        <params>
+            <param to="PatientID" from="PatientID" mode="system" type="string" description="就诊卡号"></param>
+            <param to="startTime" from="startTime" mode="system" type="string" description="开始时间"></param>
+            <param to="userid" from="userid" mode="system" type="string" description="操作员ID"></param>
+            <param to="startindex" from="startindex" mode="system" type="string" description="开始条"></param>
+            <param to="endindex" from="endindex" mode="system" type="string" description="结束条"></param>
+            <param to="endtime" from="endtime" mode="system" type="string" description="结束时间"></param>
+        </params>
+        <returns>
+            <return to="编号" from="编号" mode="system" type="string" description="就诊卡号"></return>
+            <return to="名称" from="名称" mode="system" type="string" description="报告单号"></return>
+            <return to="数量" from="数量" mode="system" type="string" description="终端Ip"></return>
+            <return to="单位" from="单位" mode="system" type="string" description="就诊卡号"></return>
+            <return to="实收金额" from="实收金额" mode="system" type="string" description="报告单号"></return>
+            <return to="时间" from="时间" mode="system" type="string" description="终端Ip"></return>
+        </returns>
+    </method>
+    <!--绑定/解绑-->
+    <method name="GetBindingInfo" call="GetBindingInfo" log="true" description="GetBindingInfo:查询绑定信息">
+        <params>
+            <param to="patientCardNo" from="patientCardNo" mode="system" type="string" description="就诊卡号"></param>
+            <param to="IdCardNo" from="IdCardNo" mode="system" type="string" description="身份证号"></param>
+            <param to="bankCardNo" from="bankCardNo" mode="system" type="string" description="银行卡号"></param>
+            <param to="terminalIp" from="terminalIp" mode="system" type="string" description="终端Ip"></param>
+        </params>
+        <returns>
+            <return to="patientCardNo" from="patientCardNo" mode="system" type="string" description="就诊卡号"></return>
+            <return to="IdCardNo" from="IdCardNo" mode="system" type="string" description="身份证号"></return>
+            <return to="bankCardNo" from="bankCardNo" mode="system" type="string" description="银行卡号"></return>
+            <return to="terminalIp" from="terminalIp" mode="system" type="string" description="终端Ip"></return>
+        </returns>
+    </method>
+    <method name="PatientCardBind" call="PatientCardBind" log="true" description="PatientCardBind:就诊卡银行卡绑定">
+        <params>
+            <param to="patientCardNo" from="patientCardNo" mode="system" type="string" description="就诊卡号"></param>
+            <param to="cardPassword" from="cardPassword" mode="system" type="string" description="就诊卡密码"></param>
+            <param to="bankCardNo" from="bankCardNo" mode="system" type="string" description="银行卡号"></param>
+            <param to="IdCardNo" from="IdCardNo" mode="system" type="string" description="身份证号"></param>
+            <param to="patientName" from="patientName" mode="system" type="string" description="病人姓名"></param>
+            <param to="operateTime" from="operateTime" mode="system" type="string" description="操作时间（yyyy-MM-dd HH:mm:ss）"></param>
+            <param to="operatorId" from="operatorId" mode="system" type="string" description="操作员号"></param>
+            <param to="terminalIp" from="terminalIp" mode="system" type="string" description="终端Ip"></param>
+        </params>
+        <returns>
+            <return to="patientCardNo" from="patientCardNo" mode="system" type="string" description="就诊卡号"></return>
+            <return to="cardPassword" from="cardPassword" mode="system" type="string" description="就诊卡密码"></return>
+            <return to="bankCardNo" from="bankCardNo" mode="system" type="string" description="银行卡号"></return>
+            <return to="IdCardNo" from="IdCardNo" mode="system" type="string" description="身份证号"></return>
+            <return to="patientName" from="patientName" mode="system" type="string" description="病人姓名"></return>
+            <return to="operateTime" from="operateTime" mode="system" type="string" description="操作时间（yyyy-MM-dd HH:mm:ss）"></return>
+            <return to="operatorId" from="operatorId" mode="system" type="string" description="操作员号"></return>
+            <return to="terminalIp" from="terminalIp" mode="system" type="string" description="终端Ip"></return>
+        </returns>
+    </method>
+    <method name="PatientCardUnBind" call="PatientCardUnBind" log="true" description="PatientCardUnBind:就诊卡银行卡解绑">
+        <params>
+            <param to="patientCardNo" from="patientCardNo" mode="system" type="string" description="就诊卡号"></param>
+            <param to="cardPassword" from="cardPassword" mode="system" type="string" description="就诊卡密码"></param>
+            <param to="bankCardNo" from="bankCardNo" mode="system" type="string" description="银行卡号"></param>
+            <param to="IdCardNo" from="IdCardNo" mode="system" type="string" description="身份证号"></param>
+            <param to="patientName" from="patientName" mode="system" type="string" description="病人姓名"></param>
+            <param to="operateTime" from="operateTime" mode="system" type="string" description="操作时间（yyyy-MM-dd HH:mm:ss）"></param>
+            <param to="operatorId" from="operatorId" mode="system" type="string" description="操作员号"></param>
+            <param to="terminalIp" from="terminalIp" mode="system" type="string" description="终端Ip"></param>
+        </params>
+        <returns>
+            <return to="patientCardNo" from="patientCardNo" mode="system" type="string" description="就诊卡号"></return>
+            <return to="cardPassword" from="cardPassword" mode="system" type="string" description="就诊卡密码"></return>
+            <return to="bankCardNo" from="bankCardNo" mode="system" type="string" description="银行卡号"></return>
+            <return to="IdCardNo" from="IdCardNo" mode="system" type="string" description="身份证号"></return>
+            <return to="patientName" from="patientName" mode="system" type="string" description="病人姓名"></return>
+            <return to="operateTime" from="operateTime" mode="system" type="string" description="操作时间（yyyy-MM-dd HH:mm:ss）"></return>
+            <return to="operatorId" from="operatorId" mode="system" type="string" description="操作员号"></return>
+            <return to="terminalIp" from="terminalIp" mode="system" type="string" description="终端Ip"></return>
+        </returns>
+    </method>
+    <!--住院-->
+    <method name="GetInPatientInfo" call="ZYQueryPatientInfo" log="true" description="GetInPatientInfo:获取住院病人信息">
+        <params>
+            <param to="patientCardNo" from="patientCardNo" mode="system" type="string" description="就诊卡号"></param>
+        </params>
+        <returns>
+            <return to="姓名" from="PatientName" mode="system" type="string" description="就诊卡号"></return>
+            <return to="押金余额" from="AccBalance" mode="system" type="string" description="住院号"></return>
+            <return to="病人ID" from="HosNo" mode="system" type="string" description="密码"></return>
+        </returns>
+    </method>
+    <method name="GetInPatientInHospitalFeesDetail" call="ZYQueryFeeDetailRecord" log="true" description="GetInPatientInHospitalFeesDetail:获取在院病人费用明细">
+        <params>
+            <param to="inPatientId" from="inPatientId" mode="system" type="string" description="住院号"></param>
+            <param to="startTime" from="startTime" mode="system" type="string" description="开始时间"></param>
+            <param to="endTime" from="endTime" mode="system" type="string" description="结束时间"></param>
+        </params>
+        <returns>
+            <return to="时间" from="FeeDate" mode="system" type="string" description=""></return>
+            <return to="名称" from="ItemName" mode="system" type="string" description=""></return>
+            <return to="数量" from="ItemQty" mode="system" type="string" description=""></return>
+            <return to="单价" from="ItemPrice" mode="system" type="string" description=""></return>
+            <return to="实收金额" from="Cost" mode="system" type="string" description=""></return>
+        </returns>
+    </method>
+    <method name="GetInPatientDischargedFeesDetail" call="GetInPatientDischargedFeesDetail" log="true" description="GetInPatientDischargedFeesDetail:获取出院病人费用明细">
+        <params>
+            <param to="patientCardNo" from="patientCardNo" mode="system" type="string" description="就诊卡号"></param>
+            <param to="inPatientId" from="inPatientId" mode="system" type="string" description="住院号"></param>
+            <param to="times" from="times" mode="system" type="string" description="住院次数"></param>
+            <param to="startTime" from="startTime" mode="system" type="string" description="开始时间"></param>
+            <param to="endTime" from="endTime" mode="system" type="string" description="结束时间"></param>
+            <param to="password" from="password" mode="system" type="string" description="密码"></param>
+            <param to="terminalIp" from="terminalIp" mode="system" type="string" description="终端Ip"></param>
+        </params>
+        <returns>
+            <return to="patientCardNo" from="patientCardNo" mode="system" type="string" description="就诊卡号"></return>
+            <return to="inPatientId" from="inPatientId" mode="system" type="string" description="住院号"></return>
+            <return to="times" from="times" mode="system" type="string" description="住院次数"></return>
+            <return to="startTime" from="startTime" mode="system" type="string" description="开始时间"></return>
+            <return to="endTime" from="endTime" mode="system" type="string" description="结束时间"></return>
+            <return to="password" from="password" mode="system" type="string" description="密码"></return>
+            <return to="terminalIp" from="terminalIp" mode="system" type="string" description="终端Ip"></return>
+        </returns>
+    </method>
+    <method name="InPatientRecharge" call="ZYAddDeposit" log="true" description="InPatientRecharge:住院预交金充值">
+        <params>
+            <param to="HosNo" from="HosNo" mode="system" type="string" description="就诊卡号"></param>
+            <param to="amt" from="amt" mode="system" type="string" description="金额（单位：元）"></param>
+            <param to="payMode" from="payMode" mode="system" type="string" description="支付方式（1现金，2银行卡）"></param>
+            <param to="bankNo" from="bankNo" mode="system" type="string" description="银行卡号（需要传入时不为空）"></param>
+            <param to="trace" from="trace" mode="system" type="string" description="流水号（yyyyMMddHHmmss+8位终端号）"></param>
+            <param to="terminalIp" from="terminalIp" mode="system" type="string" description="终端Ip"></param>
+        </params>
+        <returns>
+            <return to="ReceiptNo" from="ReceiptNo" mode="system" type="string" description=""></return>
+            <return to="CardYuE" from="CardYuE" mode="system" type="string" description=""></return>
+        </returns>
+    </method>
+    <method name="GetInPatientTradeRecord" call="ZYQueryAddBalanceRecord" log="true" description="InPatientRecharge:住院预交金充值">
+        <params>
+            <param to="HosNo" from="HosNo" mode="system" type="string" description="就诊卡号"></param>
+        </params>
+        <returns>
+            <return to="支付方式" from="PayMode" mode="system" type="string" description=""></return>
+            <return to="充值金额" from="Money" mode="system" type="string" description=""></return>
+            <return to="交易流水号" from="ReceiptNo" mode="system" type="string" description=""></return>
+            <return to="充值日期" from="DateTime" mode="system" type="string" description=""></return>
+            <return to="终端号" from="UserID" mode="system" type="string" description=""></return>
+        </returns>
+    </method>
+</root>

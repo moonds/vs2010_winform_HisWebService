@@ -1,0 +1,1106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="QueryPayType">
+        <s:complexType />
+      </s:element>
+      <s:element name="QueryPayTypeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="QueryPayTypeResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreateCardAddPosit">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CardNo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="PatientName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Sex" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Birthday" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="IDCardNo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Nation" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Address" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Tel" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="FlowNo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Pwd" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Amt" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="PayMode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="UserID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreateCardAddPositResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CreateCardAddPositResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddDeposit">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PatientID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Amt" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="PayMode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="BankNo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="FlowNo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="UserID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddDepositResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AddDepositResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="QueryPatientID">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CardNo" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="QueryPatientIDResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="QueryPatientIDResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="QueryBalanceRecord">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PatientID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="QueryBalanceRecordResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="QueryBalanceRecordResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="QueryFeeDetailRecord">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PatientID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="BeginDate" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="EndDate" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="QueryFeeDetailRecordResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="QueryFeeDetailRecordResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="QueryPatientInfo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PatientID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="QueryPatientInfoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="QueryPatientInfoResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ZYAddDeposit">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="HosNo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Amt" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="PayMode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="BankNo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="FlowNo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="UserID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ZYAddDepositResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ZYAddDepositResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ZYQueryAddBalanceRecord">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="HosNo" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ZYQueryAddBalanceRecordResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ZYQueryAddBalanceRecordResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ZYQueryPatientInfo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="HosNo" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ZYQueryPatientInfoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ZYQueryPatientInfoResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ZYQueryFeeDetailRecord">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="HosNo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="BeginDate" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="EndDate" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ZYQueryFeeDetailRecordResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ZYQueryFeeDetailRecordResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Checking">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Date" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CheckingResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CheckingResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="string" nillable="true" type="s:string" />
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="QueryPayTypeSoapIn">
+    <wsdl:part name="parameters" element="tns:QueryPayType" />
+  </wsdl:message>
+  <wsdl:message name="QueryPayTypeSoapOut">
+    <wsdl:part name="parameters" element="tns:QueryPayTypeResponse" />
+  </wsdl:message>
+  <wsdl:message name="CreateCardAddPositSoapIn">
+    <wsdl:part name="parameters" element="tns:CreateCardAddPosit" />
+  </wsdl:message>
+  <wsdl:message name="CreateCardAddPositSoapOut">
+    <wsdl:part name="parameters" element="tns:CreateCardAddPositResponse" />
+  </wsdl:message>
+  <wsdl:message name="AddDepositSoapIn">
+    <wsdl:part name="parameters" element="tns:AddDeposit" />
+  </wsdl:message>
+  <wsdl:message name="AddDepositSoapOut">
+    <wsdl:part name="parameters" element="tns:AddDepositResponse" />
+  </wsdl:message>
+  <wsdl:message name="QueryPatientIDSoapIn">
+    <wsdl:part name="parameters" element="tns:QueryPatientID" />
+  </wsdl:message>
+  <wsdl:message name="QueryPatientIDSoapOut">
+    <wsdl:part name="parameters" element="tns:QueryPatientIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="QueryBalanceRecordSoapIn">
+    <wsdl:part name="parameters" element="tns:QueryBalanceRecord" />
+  </wsdl:message>
+  <wsdl:message name="QueryBalanceRecordSoapOut">
+    <wsdl:part name="parameters" element="tns:QueryBalanceRecordResponse" />
+  </wsdl:message>
+  <wsdl:message name="QueryFeeDetailRecordSoapIn">
+    <wsdl:part name="parameters" element="tns:QueryFeeDetailRecord" />
+  </wsdl:message>
+  <wsdl:message name="QueryFeeDetailRecordSoapOut">
+    <wsdl:part name="parameters" element="tns:QueryFeeDetailRecordResponse" />
+  </wsdl:message>
+  <wsdl:message name="QueryPatientInfoSoapIn">
+    <wsdl:part name="parameters" element="tns:QueryPatientInfo" />
+  </wsdl:message>
+  <wsdl:message name="QueryPatientInfoSoapOut">
+    <wsdl:part name="parameters" element="tns:QueryPatientInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="ZYAddDepositSoapIn">
+    <wsdl:part name="parameters" element="tns:ZYAddDeposit" />
+  </wsdl:message>
+  <wsdl:message name="ZYAddDepositSoapOut">
+    <wsdl:part name="parameters" element="tns:ZYAddDepositResponse" />
+  </wsdl:message>
+  <wsdl:message name="ZYQueryAddBalanceRecordSoapIn">
+    <wsdl:part name="parameters" element="tns:ZYQueryAddBalanceRecord" />
+  </wsdl:message>
+  <wsdl:message name="ZYQueryAddBalanceRecordSoapOut">
+    <wsdl:part name="parameters" element="tns:ZYQueryAddBalanceRecordResponse" />
+  </wsdl:message>
+  <wsdl:message name="ZYQueryPatientInfoSoapIn">
+    <wsdl:part name="parameters" element="tns:ZYQueryPatientInfo" />
+  </wsdl:message>
+  <wsdl:message name="ZYQueryPatientInfoSoapOut">
+    <wsdl:part name="parameters" element="tns:ZYQueryPatientInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="ZYQueryFeeDetailRecordSoapIn">
+    <wsdl:part name="parameters" element="tns:ZYQueryFeeDetailRecord" />
+  </wsdl:message>
+  <wsdl:message name="ZYQueryFeeDetailRecordSoapOut">
+    <wsdl:part name="parameters" element="tns:ZYQueryFeeDetailRecordResponse" />
+  </wsdl:message>
+  <wsdl:message name="CheckingSoapIn">
+    <wsdl:part name="parameters" element="tns:Checking" />
+  </wsdl:message>
+  <wsdl:message name="CheckingSoapOut">
+    <wsdl:part name="parameters" element="tns:CheckingResponse" />
+  </wsdl:message>
+  <wsdl:message name="QueryPayTypeHttpGetIn" />
+  <wsdl:message name="QueryPayTypeHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="CreateCardAddPositHttpGetIn">
+    <wsdl:part name="CardNo" type="s:string" />
+    <wsdl:part name="PatientName" type="s:string" />
+    <wsdl:part name="Sex" type="s:string" />
+    <wsdl:part name="Birthday" type="s:string" />
+    <wsdl:part name="IDCardNo" type="s:string" />
+    <wsdl:part name="Nation" type="s:string" />
+    <wsdl:part name="Address" type="s:string" />
+    <wsdl:part name="Tel" type="s:string" />
+    <wsdl:part name="FlowNo" type="s:string" />
+    <wsdl:part name="Pwd" type="s:string" />
+    <wsdl:part name="Amt" type="s:string" />
+    <wsdl:part name="PayMode" type="s:string" />
+    <wsdl:part name="UserID" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="CreateCardAddPositHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="AddDepositHttpGetIn">
+    <wsdl:part name="PatientID" type="s:string" />
+    <wsdl:part name="Amt" type="s:string" />
+    <wsdl:part name="PayMode" type="s:string" />
+    <wsdl:part name="BankNo" type="s:string" />
+    <wsdl:part name="FlowNo" type="s:string" />
+    <wsdl:part name="UserID" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="AddDepositHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="QueryPatientIDHttpGetIn">
+    <wsdl:part name="CardNo" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="QueryPatientIDHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="QueryBalanceRecordHttpGetIn">
+    <wsdl:part name="PatientID" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="QueryBalanceRecordHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="QueryFeeDetailRecordHttpGetIn">
+    <wsdl:part name="PatientID" type="s:string" />
+    <wsdl:part name="BeginDate" type="s:string" />
+    <wsdl:part name="EndDate" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="QueryFeeDetailRecordHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="QueryPatientInfoHttpGetIn">
+    <wsdl:part name="PatientID" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="QueryPatientInfoHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="ZYAddDepositHttpGetIn">
+    <wsdl:part name="HosNo" type="s:string" />
+    <wsdl:part name="Amt" type="s:string" />
+    <wsdl:part name="PayMode" type="s:string" />
+    <wsdl:part name="BankNo" type="s:string" />
+    <wsdl:part name="FlowNo" type="s:string" />
+    <wsdl:part name="UserID" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ZYAddDepositHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="ZYQueryAddBalanceRecordHttpGetIn">
+    <wsdl:part name="HosNo" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ZYQueryAddBalanceRecordHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="ZYQueryPatientInfoHttpGetIn">
+    <wsdl:part name="HosNo" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ZYQueryPatientInfoHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="ZYQueryFeeDetailRecordHttpGetIn">
+    <wsdl:part name="HosNo" type="s:string" />
+    <wsdl:part name="BeginDate" type="s:string" />
+    <wsdl:part name="EndDate" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ZYQueryFeeDetailRecordHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="CheckingHttpGetIn">
+    <wsdl:part name="Date" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="CheckingHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="QueryPayTypeHttpPostIn" />
+  <wsdl:message name="QueryPayTypeHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="CreateCardAddPositHttpPostIn">
+    <wsdl:part name="CardNo" type="s:string" />
+    <wsdl:part name="PatientName" type="s:string" />
+    <wsdl:part name="Sex" type="s:string" />
+    <wsdl:part name="Birthday" type="s:string" />
+    <wsdl:part name="IDCardNo" type="s:string" />
+    <wsdl:part name="Nation" type="s:string" />
+    <wsdl:part name="Address" type="s:string" />
+    <wsdl:part name="Tel" type="s:string" />
+    <wsdl:part name="FlowNo" type="s:string" />
+    <wsdl:part name="Pwd" type="s:string" />
+    <wsdl:part name="Amt" type="s:string" />
+    <wsdl:part name="PayMode" type="s:string" />
+    <wsdl:part name="UserID" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="CreateCardAddPositHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="AddDepositHttpPostIn">
+    <wsdl:part name="PatientID" type="s:string" />
+    <wsdl:part name="Amt" type="s:string" />
+    <wsdl:part name="PayMode" type="s:string" />
+    <wsdl:part name="BankNo" type="s:string" />
+    <wsdl:part name="FlowNo" type="s:string" />
+    <wsdl:part name="UserID" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="AddDepositHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="QueryPatientIDHttpPostIn">
+    <wsdl:part name="CardNo" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="QueryPatientIDHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="QueryBalanceRecordHttpPostIn">
+    <wsdl:part name="PatientID" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="QueryBalanceRecordHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="QueryFeeDetailRecordHttpPostIn">
+    <wsdl:part name="PatientID" type="s:string" />
+    <wsdl:part name="BeginDate" type="s:string" />
+    <wsdl:part name="EndDate" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="QueryFeeDetailRecordHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="QueryPatientInfoHttpPostIn">
+    <wsdl:part name="PatientID" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="QueryPatientInfoHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="ZYAddDepositHttpPostIn">
+    <wsdl:part name="HosNo" type="s:string" />
+    <wsdl:part name="Amt" type="s:string" />
+    <wsdl:part name="PayMode" type="s:string" />
+    <wsdl:part name="BankNo" type="s:string" />
+    <wsdl:part name="FlowNo" type="s:string" />
+    <wsdl:part name="UserID" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ZYAddDepositHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="ZYQueryAddBalanceRecordHttpPostIn">
+    <wsdl:part name="HosNo" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ZYQueryAddBalanceRecordHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="ZYQueryPatientInfoHttpPostIn">
+    <wsdl:part name="HosNo" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ZYQueryPatientInfoHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="ZYQueryFeeDetailRecordHttpPostIn">
+    <wsdl:part name="HosNo" type="s:string" />
+    <wsdl:part name="BeginDate" type="s:string" />
+    <wsdl:part name="EndDate" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ZYQueryFeeDetailRecordHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="CheckingHttpPostIn">
+    <wsdl:part name="Date" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="CheckingHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:portType name="ChisWebServiceSoap">
+    <wsdl:operation name="QueryPayType">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">查询收费类别字典</wsdl:documentation>
+      <wsdl:input message="tns:QueryPayTypeSoapIn" />
+      <wsdl:output message="tns:QueryPayTypeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateCardAddPosit">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">患者信息建档、充值,（支付方式：01现金，02银行卡）</wsdl:documentation>
+      <wsdl:input message="tns:CreateCardAddPositSoapIn" />
+      <wsdl:output message="tns:CreateCardAddPositSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AddDeposit">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">卡预交金操作</wsdl:documentation>
+      <wsdl:input message="tns:AddDepositSoapIn" />
+      <wsdl:output message="tns:AddDepositSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="QueryPatientID">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">通过卡号查询患者病历号</wsdl:documentation>
+      <wsdl:input message="tns:QueryPatientIDSoapIn" />
+      <wsdl:output message="tns:QueryPatientIDSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="QueryBalanceRecord">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">获取预交金充值退费记录（支付方式：01现金，02银行卡,PatientID为病人ID）</wsdl:documentation>
+      <wsdl:input message="tns:QueryBalanceRecordSoapIn" />
+      <wsdl:output message="tns:QueryBalanceRecordSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="QueryFeeDetailRecord">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">查询门诊消费记录</wsdl:documentation>
+      <wsdl:input message="tns:QueryFeeDetailRecordSoapIn" />
+      <wsdl:output message="tns:QueryFeeDetailRecordSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="QueryPatientInfo">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">获取病人基本信息</wsdl:documentation>
+      <wsdl:input message="tns:QueryPatientInfoSoapIn" />
+      <wsdl:output message="tns:QueryPatientInfoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ZYAddDeposit">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">住院账户预交金充值（PayMode:01代表现金，02代表银行卡）</wsdl:documentation>
+      <wsdl:input message="tns:ZYAddDepositSoapIn" />
+      <wsdl:output message="tns:ZYAddDepositSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ZYQueryAddBalanceRecord">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">查询预交金充值记录（HosNo：病历号）</wsdl:documentation>
+      <wsdl:input message="tns:ZYQueryAddBalanceRecordSoapIn" />
+      <wsdl:output message="tns:ZYQueryAddBalanceRecordSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ZYQueryPatientInfo">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">获取住院病人基本信息（HosNo：病历号）</wsdl:documentation>
+      <wsdl:input message="tns:ZYQueryPatientInfoSoapIn" />
+      <wsdl:output message="tns:ZYQueryPatientInfoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ZYQueryFeeDetailRecord">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">查询住院消费记录（HosNo：病历号）</wsdl:documentation>
+      <wsdl:input message="tns:ZYQueryFeeDetailRecordSoapIn" />
+      <wsdl:output message="tns:ZYQueryFeeDetailRecordSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Checking">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">对账</wsdl:documentation>
+      <wsdl:input message="tns:CheckingSoapIn" />
+      <wsdl:output message="tns:CheckingSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="ChisWebServiceHttpGet">
+    <wsdl:operation name="QueryPayType">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">查询收费类别字典</wsdl:documentation>
+      <wsdl:input message="tns:QueryPayTypeHttpGetIn" />
+      <wsdl:output message="tns:QueryPayTypeHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateCardAddPosit">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">患者信息建档、充值,（支付方式：01现金，02银行卡）</wsdl:documentation>
+      <wsdl:input message="tns:CreateCardAddPositHttpGetIn" />
+      <wsdl:output message="tns:CreateCardAddPositHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AddDeposit">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">卡预交金操作</wsdl:documentation>
+      <wsdl:input message="tns:AddDepositHttpGetIn" />
+      <wsdl:output message="tns:AddDepositHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="QueryPatientID">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">通过卡号查询患者病历号</wsdl:documentation>
+      <wsdl:input message="tns:QueryPatientIDHttpGetIn" />
+      <wsdl:output message="tns:QueryPatientIDHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="QueryBalanceRecord">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">获取预交金充值退费记录（支付方式：01现金，02银行卡,PatientID为病人ID）</wsdl:documentation>
+      <wsdl:input message="tns:QueryBalanceRecordHttpGetIn" />
+      <wsdl:output message="tns:QueryBalanceRecordHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="QueryFeeDetailRecord">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">查询门诊消费记录</wsdl:documentation>
+      <wsdl:input message="tns:QueryFeeDetailRecordHttpGetIn" />
+      <wsdl:output message="tns:QueryFeeDetailRecordHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="QueryPatientInfo">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">获取病人基本信息</wsdl:documentation>
+      <wsdl:input message="tns:QueryPatientInfoHttpGetIn" />
+      <wsdl:output message="tns:QueryPatientInfoHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ZYAddDeposit">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">住院账户预交金充值（PayMode:01代表现金，02代表银行卡）</wsdl:documentation>
+      <wsdl:input message="tns:ZYAddDepositHttpGetIn" />
+      <wsdl:output message="tns:ZYAddDepositHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ZYQueryAddBalanceRecord">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">查询预交金充值记录（HosNo：病历号）</wsdl:documentation>
+      <wsdl:input message="tns:ZYQueryAddBalanceRecordHttpGetIn" />
+      <wsdl:output message="tns:ZYQueryAddBalanceRecordHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ZYQueryPatientInfo">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">获取住院病人基本信息（HosNo：病历号）</wsdl:documentation>
+      <wsdl:input message="tns:ZYQueryPatientInfoHttpGetIn" />
+      <wsdl:output message="tns:ZYQueryPatientInfoHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ZYQueryFeeDetailRecord">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">查询住院消费记录（HosNo：病历号）</wsdl:documentation>
+      <wsdl:input message="tns:ZYQueryFeeDetailRecordHttpGetIn" />
+      <wsdl:output message="tns:ZYQueryFeeDetailRecordHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Checking">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">对账</wsdl:documentation>
+      <wsdl:input message="tns:CheckingHttpGetIn" />
+      <wsdl:output message="tns:CheckingHttpGetOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="ChisWebServiceHttpPost">
+    <wsdl:operation name="QueryPayType">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">查询收费类别字典</wsdl:documentation>
+      <wsdl:input message="tns:QueryPayTypeHttpPostIn" />
+      <wsdl:output message="tns:QueryPayTypeHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateCardAddPosit">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">患者信息建档、充值,（支付方式：01现金，02银行卡）</wsdl:documentation>
+      <wsdl:input message="tns:CreateCardAddPositHttpPostIn" />
+      <wsdl:output message="tns:CreateCardAddPositHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AddDeposit">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">卡预交金操作</wsdl:documentation>
+      <wsdl:input message="tns:AddDepositHttpPostIn" />
+      <wsdl:output message="tns:AddDepositHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="QueryPatientID">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">通过卡号查询患者病历号</wsdl:documentation>
+      <wsdl:input message="tns:QueryPatientIDHttpPostIn" />
+      <wsdl:output message="tns:QueryPatientIDHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="QueryBalanceRecord">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">获取预交金充值退费记录（支付方式：01现金，02银行卡,PatientID为病人ID）</wsdl:documentation>
+      <wsdl:input message="tns:QueryBalanceRecordHttpPostIn" />
+      <wsdl:output message="tns:QueryBalanceRecordHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="QueryFeeDetailRecord">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">查询门诊消费记录</wsdl:documentation>
+      <wsdl:input message="tns:QueryFeeDetailRecordHttpPostIn" />
+      <wsdl:output message="tns:QueryFeeDetailRecordHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="QueryPatientInfo">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">获取病人基本信息</wsdl:documentation>
+      <wsdl:input message="tns:QueryPatientInfoHttpPostIn" />
+      <wsdl:output message="tns:QueryPatientInfoHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ZYAddDeposit">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">住院账户预交金充值（PayMode:01代表现金，02代表银行卡）</wsdl:documentation>
+      <wsdl:input message="tns:ZYAddDepositHttpPostIn" />
+      <wsdl:output message="tns:ZYAddDepositHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ZYQueryAddBalanceRecord">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">查询预交金充值记录（HosNo：病历号）</wsdl:documentation>
+      <wsdl:input message="tns:ZYQueryAddBalanceRecordHttpPostIn" />
+      <wsdl:output message="tns:ZYQueryAddBalanceRecordHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ZYQueryPatientInfo">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">获取住院病人基本信息（HosNo：病历号）</wsdl:documentation>
+      <wsdl:input message="tns:ZYQueryPatientInfoHttpPostIn" />
+      <wsdl:output message="tns:ZYQueryPatientInfoHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ZYQueryFeeDetailRecord">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">查询住院消费记录（HosNo：病历号）</wsdl:documentation>
+      <wsdl:input message="tns:ZYQueryFeeDetailRecordHttpPostIn" />
+      <wsdl:output message="tns:ZYQueryFeeDetailRecordHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Checking">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">对账</wsdl:documentation>
+      <wsdl:input message="tns:CheckingHttpPostIn" />
+      <wsdl:output message="tns:CheckingHttpPostOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ChisWebServiceSoap" type="tns:ChisWebServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="QueryPayType">
+      <soap:operation soapAction="http://tempuri.org/QueryPayType" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateCardAddPosit">
+      <soap:operation soapAction="http://tempuri.org/CreateCardAddPosit" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddDeposit">
+      <soap:operation soapAction="http://tempuri.org/AddDeposit" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueryPatientID">
+      <soap:operation soapAction="http://tempuri.org/QueryPatientID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueryBalanceRecord">
+      <soap:operation soapAction="http://tempuri.org/QueryBalanceRecord" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueryFeeDetailRecord">
+      <soap:operation soapAction="http://tempuri.org/QueryFeeDetailRecord" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueryPatientInfo">
+      <soap:operation soapAction="http://tempuri.org/QueryPatientInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ZYAddDeposit">
+      <soap:operation soapAction="http://tempuri.org/ZYAddDeposit" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ZYQueryAddBalanceRecord">
+      <soap:operation soapAction="http://tempuri.org/ZYQueryAddBalanceRecord" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ZYQueryPatientInfo">
+      <soap:operation soapAction="http://tempuri.org/ZYQueryPatientInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ZYQueryFeeDetailRecord">
+      <soap:operation soapAction="http://tempuri.org/ZYQueryFeeDetailRecord" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Checking">
+      <soap:operation soapAction="http://tempuri.org/Checking" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ChisWebServiceSoap12" type="tns:ChisWebServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="QueryPayType">
+      <soap12:operation soapAction="http://tempuri.org/QueryPayType" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateCardAddPosit">
+      <soap12:operation soapAction="http://tempuri.org/CreateCardAddPosit" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddDeposit">
+      <soap12:operation soapAction="http://tempuri.org/AddDeposit" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueryPatientID">
+      <soap12:operation soapAction="http://tempuri.org/QueryPatientID" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueryBalanceRecord">
+      <soap12:operation soapAction="http://tempuri.org/QueryBalanceRecord" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueryFeeDetailRecord">
+      <soap12:operation soapAction="http://tempuri.org/QueryFeeDetailRecord" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueryPatientInfo">
+      <soap12:operation soapAction="http://tempuri.org/QueryPatientInfo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ZYAddDeposit">
+      <soap12:operation soapAction="http://tempuri.org/ZYAddDeposit" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ZYQueryAddBalanceRecord">
+      <soap12:operation soapAction="http://tempuri.org/ZYQueryAddBalanceRecord" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ZYQueryPatientInfo">
+      <soap12:operation soapAction="http://tempuri.org/ZYQueryPatientInfo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ZYQueryFeeDetailRecord">
+      <soap12:operation soapAction="http://tempuri.org/ZYQueryFeeDetailRecord" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Checking">
+      <soap12:operation soapAction="http://tempuri.org/Checking" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ChisWebServiceHttpGet" type="tns:ChisWebServiceHttpGet">
+    <http:binding verb="GET" />
+    <wsdl:operation name="QueryPayType">
+      <http:operation location="/QueryPayType" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateCardAddPosit">
+      <http:operation location="/CreateCardAddPosit" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddDeposit">
+      <http:operation location="/AddDeposit" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueryPatientID">
+      <http:operation location="/QueryPatientID" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueryBalanceRecord">
+      <http:operation location="/QueryBalanceRecord" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueryFeeDetailRecord">
+      <http:operation location="/QueryFeeDetailRecord" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueryPatientInfo">
+      <http:operation location="/QueryPatientInfo" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ZYAddDeposit">
+      <http:operation location="/ZYAddDeposit" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ZYQueryAddBalanceRecord">
+      <http:operation location="/ZYQueryAddBalanceRecord" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ZYQueryPatientInfo">
+      <http:operation location="/ZYQueryPatientInfo" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ZYQueryFeeDetailRecord">
+      <http:operation location="/ZYQueryFeeDetailRecord" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Checking">
+      <http:operation location="/Checking" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ChisWebServiceHttpPost" type="tns:ChisWebServiceHttpPost">
+    <http:binding verb="POST" />
+    <wsdl:operation name="QueryPayType">
+      <http:operation location="/QueryPayType" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateCardAddPosit">
+      <http:operation location="/CreateCardAddPosit" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddDeposit">
+      <http:operation location="/AddDeposit" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueryPatientID">
+      <http:operation location="/QueryPatientID" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueryBalanceRecord">
+      <http:operation location="/QueryBalanceRecord" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueryFeeDetailRecord">
+      <http:operation location="/QueryFeeDetailRecord" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueryPatientInfo">
+      <http:operation location="/QueryPatientInfo" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ZYAddDeposit">
+      <http:operation location="/ZYAddDeposit" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ZYQueryAddBalanceRecord">
+      <http:operation location="/ZYQueryAddBalanceRecord" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ZYQueryPatientInfo">
+      <http:operation location="/ZYQueryPatientInfo" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ZYQueryFeeDetailRecord">
+      <http:operation location="/ZYQueryFeeDetailRecord" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Checking">
+      <http:operation location="/Checking" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ChisWebService">
+    <wsdl:port name="ChisWebServiceSoap" binding="tns:ChisWebServiceSoap">
+      <soap:address location="http://100.100.6.2:1020/ChisWebService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="ChisWebServiceSoap12" binding="tns:ChisWebServiceSoap12">
+      <soap12:address location="http://100.100.6.2:1020/ChisWebService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="ChisWebServiceHttpGet" binding="tns:ChisWebServiceHttpGet">
+      <http:address location="http://100.100.6.2:1020/ChisWebService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="ChisWebServiceHttpPost" binding="tns:ChisWebServiceHttpPost">
+      <http:address location="http://100.100.6.2:1020/ChisWebService.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,181 @@
+【传入】
+CreateCardAddPosit 
+ 00050000 
+  测试账户 
+  男 
+  2015-12-12 
+  370103201512124510 
+  汉族 
+  市立医院信息科 
+  13966668888 
+  2015112200000001 
+  666666 
+  100 
+  CA 
+  801001
+【传出】
+<Response>
+ <ResultCode>0</ResultCode>
+ <ErrorMsg>交易成功</ErrorMsg>
+ <ResultData>
+  <CardNo>00050000</CardNo>
+  <PatientID>7838</PatientID>
+  <Balance>100.00</Balance>
+ </ResultData>
+</Response>
+【传入】
+CreateCardAddPosit 
+ 00050000 
+  测试账户 
+  男 
+  2015-12-12 
+  370103201512124510 
+  汉族 
+  市立医院信息科 
+  13966668888 
+  2015112200000001 
+  666666 
+  100 
+  CA 
+  801001
+【传出】
+<Response>
+ <ResultCode>1</ResultCode>
+ <ErrorMsg>交易失败:卡号重复！</ErrorMsg>
+</Response>
+【传入】
+CreateCardAddPosit 
+ 00050000 
+  测试账户 
+  男 
+  2015-12-12 
+  370103201512124510 
+  汉族 
+  市立医院信息科 
+  13966668888 
+  2015112200000001 
+  666666 
+  100 
+  CA 
+  801001
+【传出】
+<Response>
+ <ResultCode>1</ResultCode>
+ <ErrorMsg>交易失败:卡号重复！</ErrorMsg>
+</Response>
+【传入】
+CreateCardAddPosit 
+ 00050001 
+  测试账户 
+  男 
+  2015-12-12 
+  370103201512124510 
+  汉族 
+  市立医院信息科 
+  13966668888 
+  2015112200000001 
+  666666 
+  100 
+  CA 
+  801001
+【传出】
+<Response>
+ <ResultCode>1</ResultCode>
+ <ErrorMsg>交易失败</ErrorMsg>
+</Response>
+【传入】
+CreateCardAddPosit 
+ 00050001 
+  测试账户 
+  男 
+  2015-12-12 
+  370103201512124510 
+  汉族 
+  市立医院信息科 
+  13966668888 
+  2015112200000001 
+  666666 
+  100 
+  CA 
+  801001
+【传出】
+<Response>
+ <ResultCode>1</ResultCode>
+ <ErrorMsg>交易失败</ErrorMsg>
+</Response>
+【传入】
+CreateCardAddPosit 
+ 00050001 
+  测试账户 
+  男 
+  2015-12-12 
+  370103201512124510 
+  汉族 
+  市立医院信息科 
+  13966668888 
+  2015112200000001 
+  666666 
+  100 
+  CA 
+  0001
+【传出】
+<Response>
+ <ResultCode>0</ResultCode>
+ <ErrorMsg>交易成功</ErrorMsg>
+ <ResultData>
+  <CardNo>00050001</CardNo>
+  <PatientID>7852</PatientID>
+  <Balance>99.00</Balance>
+ </ResultData>
+</Response>
+【传入】
+ZYQueryPatientInfo 
+  0000116
+【传出】
+<Response>
+ <ResultCode>0</ResultCode>
+ <ErrorMsg>交易成功</ErrorMsg>
+ <ResultData>
+  <RecordList>
+   <RecordInfo>
+    <Birthday>1962-02-26</Birthday>
+    <IDCardNo>370102196202260345</IDCardNo>
+    <PatientName>韩世云</PatientName>
+    <HosNo>0000116</HosNo>
+    <Sex>女</Sex>
+    <Tel/>
+     <Nation>汉族</Nation>
+     <CreateDate>2014-10-13</CreateDate>
+     <AccBalance>550.87</AccBalance>
+     </RecordInfo>
+      </RecordList>
+       </ResultData>
+        </Response>
+【传入】
+QueryBalanceRecord 
+ 00045103
+【传出】
+<Response>
+ <ResultCode>0</ResultCode>
+ <ErrorMsg>交易成功</ErrorMsg>
+ <ResultData>
+  <RecordList>
+   <RecordInfo>
+    <PayMode>CA</PayMode>
+    <BankNo/>
+     <Money>100.00</Money>
+     <ReceiptNo>2015112200000001</ReceiptNo>
+     <DateTime>2015-12-0310:21:13</DateTime>
+     <UserID>801001</UserID>
+     </RecordInfo>
+      <RecordInfo>
+       <PayMode>CA</PayMode>
+       <BankNo/>
+        <Money>100.00</Money>
+        <ReceiptNo>2012080100000021</ReceiptNo>
+        <DateTime>2015-12-0310:22:15</DateTime>
+        <UserID>801001</UserID>
+        </RecordInfo>
+         </RecordList>
+          </ResultData>
+           </Response>

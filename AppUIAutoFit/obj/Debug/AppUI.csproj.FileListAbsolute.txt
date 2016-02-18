@@ -1,0 +1,8 @@
+D:\其他\范例\HisWebServiceTest\AppUIAutoFit\bin\Debug\AppUIAutoFit.dll
+D:\其他\范例\HisWebServiceTest\AppUIAutoFit\bin\Debug\AppUIAutoFit.pdb
+D:\其他\范例\HisWebServiceTest\AppUIAutoFit\obj\Debug\AppUIAutoFit.dll
+D:\其他\范例\HisWebServiceTest\AppUIAutoFit\obj\Debug\AppUIAutoFit.pdb
+D:\《绿色软件》\HisWebServiceTest\AppUIAutoFit\bin\Debug\AppUIAutoFit.dll
+D:\《绿色软件》\HisWebServiceTest\AppUIAutoFit\bin\Debug\AppUIAutoFit.pdb
+D:\《绿色软件》\HisWebServiceTest\AppUIAutoFit\obj\Debug\AppUIAutoFit.dll
+D:\《绿色软件》\HisWebServiceTest\AppUIAutoFit\obj\Debug\AppUIAutoFit.pdb

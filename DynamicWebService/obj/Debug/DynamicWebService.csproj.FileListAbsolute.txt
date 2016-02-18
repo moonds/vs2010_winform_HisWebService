@@ -1,0 +1,9 @@
+D:\其他\范例\HisWebServiceTest\DynamicWebService\bin\Debug\DynamicWebService.dll
+D:\其他\范例\HisWebServiceTest\DynamicWebService\bin\Debug\DynamicWebService.pdb
+D:\其他\范例\HisWebServiceTest\DynamicWebService\obj\Debug\DynamicWebService.dll
+D:\其他\范例\HisWebServiceTest\DynamicWebService\obj\Debug\DynamicWebService.pdb
+D:\其他\范例\HisWebServiceTest\DynamicWebService\obj\Debug\DynamicWebService.csprojResolveAssemblyReference.cache
+D:\《绿色软件》\HisWebServiceTest\DynamicWebService\bin\Debug\DynamicWebService.dll
+D:\《绿色软件》\HisWebServiceTest\DynamicWebService\bin\Debug\DynamicWebService.pdb
+D:\《绿色软件》\HisWebServiceTest\DynamicWebService\obj\Debug\DynamicWebService.dll
+D:\《绿色软件》\HisWebServiceTest\DynamicWebService\obj\Debug\DynamicWebService.pdb

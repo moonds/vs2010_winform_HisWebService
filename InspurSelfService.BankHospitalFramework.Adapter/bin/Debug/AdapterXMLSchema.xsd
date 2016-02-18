@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema targetNamespace="http://inspur.com/ihss/Validation"
+elementFormDefault="qualified"
+xmlns:mstns="http://tempuri.org/XMLSchema.xsd"
+xmlns:xs="http://www.w3.org/2001/XMLSchema"
+xmlns="http://inspur.com/ihss/Validation"
+xmlns:vs="http://schemas.microsoft.com/Visual-Studio-Intellisense">
+
+  <!--根节点定义-->
+  <xs:element name="root">
+    <xs:complexType>
+      <xs:sequence>
+        <!--method节点定义-->
+        <xs:element name="method" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <!-- 节点定义-->
+              <xs:element ref="params" minOccurs="1" maxOccurs="1"/>
+              <xs:element ref="returns" minOccurs="1" maxOccurs="1"/>
+            </xs:sequence>
+            <!--method属性-->
+            <xs:attribute name="name" type="xs:string" use="required"/>
+            <xs:attribute name="call" type="xs:string" use="required"/>
+            <xs:attribute name="log" type="xs:boolean" use="required"/>
+            <xs:attribute name="description" type="xs:string"/>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <!--param元素mode属性值枚举-->
+  <xs:simpleType name="modeType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="system"/>
+      <xs:enumeration value="custom"/>
+      <xs:enumeration value="null"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <!--param元素type属性值枚举-->
+  <xs:simpleType name="dataType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="string"/>
+      <xs:enumeration value="bool"/>
+      <xs:enumeration value="int"/>
+      <xs:enumeration value="float"/>
+      <xs:enumeration value="double"/>
+      <xs:enumeration value="decimal"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <!--params元素-->
+  <xs:element name="params">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="param" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:attribute name="to" type="xs:string" use="required"/>
+            <xs:attribute name="from" type="xs:string"/>
+            <xs:attribute name="mode" type="modeType" default="null"/>
+            <xs:attribute name="type" type="dataType" default="string"/>
+            <xs:attribute name="description" type="xs:string"/>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="returns">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="return" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:attribute name="to" type="xs:string" use="required"/>
+            <xs:attribute name="from" type="xs:string"/>
+            <xs:attribute name="mode" type="modeType" default="null"/>
+            <xs:attribute name="type" type="dataType" default="string"/>
+            <xs:attribute name="description" type="xs:string"/>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+</xs:schema>
+

@@ -1,0 +1,22 @@
+1.BankCallHis：Bank调用His接口
+需求：如中行河南省行
+说明：银行发起请求经由银医适配器调用His接口
+方式：（1）通过TransactionServer以WebService方式调用
+	  （2）加“Socket与Soap转接层”以Socket方式调用
+
+
+2.HisCallBank：His调用Bank接口
+需求：如阜新项目、西安医学院附属医院
+说明：His发起请求经由银医适配器调用银行接口
+方式：（1）通过TransactionServer或加单纯的“Soap与Socket转接层”以WebService方式调用
+	  （2）加“Socket与Socket转接层”以Socket方式调用
+
+3.IHSSCallBank：银医系统调用银行接口
+需求：通用需求
+说明：银医系统发起请求调用银行接口
+方式：（1）通过TransactionServer以WebService方式调用
+
+4.IHSSCallHis：银医系统调用His接口
+需求：通用需求
+说明：银医系统发起请求调用His接口
+方式：（1）通过TransactionServer以WebService方式调用

@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<root>
+  <method name="" type="" summary="">
+    <input>
+      <Request>
+        <TranCode>0003</TranCode >
+          <CardNo>0010000101</CardNo>
+          <PatientName>张三</PatientName>
+          <Sex>0</Sex>
+          <Birthday>19900101</Birthday>
+          <Age>22</Age>
+          <IDCardNo>410105199001010020</IDCardNo>
+          <SecrityNo></SecrityNo>
+          <CardSerNo></CardSerNo>
+          <Address>河南省郑州市金水区农业路1号</Address>
+          <Tel>18637110001</Tel>
+          <Amt>100</Amt>
+          <ActDate>2012-12-25</ActDate>
+          <ActTime>10:00</ActTime>
+          <FlowNo>0001201212250001</FlowNo>
+          <TranType>0</TranType>
+          <AccdNo>0001001</AccdNo>
+          <BankName>XX银行</BankName>
+          <BankNo>62260010010001</BankNo>
+          <CeateType></CeateType>
+          <Notes></Notes>
+          <National></National>
+          <UserId>X001</UserId>
+        </Request>
+    </input>
+    <output>
+      <Response>
+        <ResultCode>0</ResultCode>
+        <ErrorMsg>建卡成功！</ErrorMsg>
+        <SerID></SerID>
+      </Response>
+    </output>
+  </method>
+</root>

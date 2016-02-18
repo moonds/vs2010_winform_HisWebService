@@ -1,0 +1,123 @@
+【传入】
+QueryZlxm
+sm
+【传出】
+<Response>
+ <ResultCode>0</ResultCode>
+ <ErrorMsg>交易成功</ErrorMsg>
+ <ResultData>
+  <RecordList>
+   <RecordInfo>
+    <ypid>1354</ypid>
+    <ym>沙门菌、志贺菌培养及鉴定</ym>
+    <lsj>40</lsj>
+    <sm>SMJZHJP</sm>
+   </RecordInfo>
+   <RecordInfo>
+    <ypid>1625</ypid>
+    <ym>扫描激光眼底检查(SLO)</ym>
+    <lsj>100</lsj>
+    <sm>SMJGYDJC</sm>
+   </RecordInfo>
+   <RecordInfo>
+    <ypid>1965</ypid>
+    <ym>睡眠呼吸暂停综合征(OSAS)正畸治疗</ym>
+    <lsj>1000</lsj>
+    <sm>SMHXZTZH</sm>
+   </RecordInfo>
+   <RecordInfo>
+    <ypid>1991</ypid>
+    <ym>睡眠呼吸监测</ym>
+    <lsj>580</lsj>
+    <sm>SMHXJC</sm>
+   </RecordInfo>
+   <RecordInfo>
+    <ypid>1992</ypid>
+    <ym>睡眠呼吸监测过筛试验</ym>
+    <lsj>280</lsj>
+    <sm>SMHXJCGS</sm>
+   </RecordInfo>
+   <RecordInfo>
+    <ypid>2916</ypid>
+    <ym>睡眠呼吸暂停综合症射频温控消融治疗术</ym>
+    <lsj>0</lsj>
+    <sm>SMHXZTZH</sm>
+   </RecordInfo>
+   <RecordInfo>
+    <ypid>3095</ypid>
+    <ym>声门上水平喉切除术</ym>
+    <lsj>2180</lsj>
+    <sm>SMSSPHQC</sm>
+   </RecordInfo>
+   <RecordInfo>
+    <ypid>6320</ypid>
+    <ym>双面砂片16mm100*1</ym>
+    <lsj>0.9</lsj>
+    <sm>SMSP16MM</sm>
+   </RecordInfo>
+   <RecordInfo>
+    <ypid>6669</ypid>
+    <ym>smartcontrol支架系统</ym>
+    <lsj>11948</lsj>
+    <sm>SMARTCON</sm>
+   </RecordInfo>
+   <RecordInfo>
+    <ypid>6861</ypid>
+    <ym>睡眠呼吸监测</ym>
+    <lsj>630</lsj>
+    <sm>SMHXJC</sm>
+   </RecordInfo>
+   <RecordInfo>
+    <ypid>7590</ypid>
+    <ym>睡眠呼吸暂停综合症射频温控消融治疗术(50%)</ym>
+    <lsj>27.5</lsj>
+    <sm>SMHXZTZH</sm>
+   </RecordInfo>
+   <RecordInfo>
+    <ypid>7769</ypid>
+    <ym>声门上水平喉切除术(50%)</ym>
+    <lsj>700</lsj>
+    <sm>SMSSPHQC</sm>
+   </RecordInfo>
+   <RecordInfo>
+    <ypid>AAHN</ypid>
+    <ym>沙门菌、志贺菌培养及鉴定（仪器法）</ym>
+    <lsj>70</lsj>
+    <sm>SMJZHJPYJJDYQF</sm>
+   </RecordInfo>
+  </RecordList>
+ </ResultData>
+</Response>
+【传入】
+ZYQueryAddBalanceRecord
+0003933
+【传出】
+<Response>
+ <ResultCode>0</ResultCode>
+ <ErrorMsg>交易成功</ErrorMsg>
+ <ResultData>
+  <RecordList>
+   <RecordInfo>
+    <PayMode>现金</PayMode>
+    <Money>5000</Money>
+    <ReceiptNo>020132076</ReceiptNo>
+    <DateTime>2015-10-0117:14:14</DateTime>
+    <UserID>1600</UserID>
+   </RecordInfo>
+   <RecordInfo>
+    <PayMode>现金</PayMode>
+    <Money>40000</Money>
+    <ReceiptNo>900006518</ReceiptNo>
+    <DateTime>2015-09-0815:52:30</DateTime>
+    <UserID>1148</UserID>
+   </RecordInfo>
+   <RecordInfo>
+    <PayMode>现金</PayMode>
+    <Money>2000</Money>
+    <ReceiptNo>000005652</ReceiptNo>
+    <DateTime>2015-09-0711:46:44</DateTime>
+    <UserID>0198</UserID>
+   </RecordInfo>
+  </RecordList>
+ </ResultData>
+</Response>

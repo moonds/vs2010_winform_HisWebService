@@ -1,0 +1,14 @@
+C:\Users\moon\Desktop\HisWebServiceTest\DataFormat\bin\Debug\DataFormat.dll
+C:\Users\moon\Desktop\HisWebServiceTest\DataFormat\bin\Debug\DataFormat.pdb
+C:\Users\moon\Desktop\HisWebServiceTest\DataFormat\obj\Debug\DataFormat.dll
+C:\Users\moon\Desktop\HisWebServiceTest\DataFormat\obj\Debug\DataFormat.pdb
+C:\Users\moon\Desktop\HisWebServiceTest\DataFormat\obj\Debug\DataFormat.csprojResolveAssemblyReference.cache
+D:\其他\范例\HisWebServiceTest\DataFormat\bin\Debug\DataFormat.dll
+D:\其他\范例\HisWebServiceTest\DataFormat\bin\Debug\DataFormat.pdb
+D:\其他\范例\HisWebServiceTest\DataFormat\obj\Debug\DataFormat.dll
+D:\其他\范例\HisWebServiceTest\DataFormat\obj\Debug\DataFormat.pdb
+D:\其他\范例\HisWebServiceTest\DataFormat\obj\Debug\DataFormat.csprojResolveAssemblyReference.cache
+D:\《绿色软件》\HisWebServiceTest\DataFormat\bin\Debug\DataFormat.dll
+D:\《绿色软件》\HisWebServiceTest\DataFormat\bin\Debug\DataFormat.pdb
+D:\《绿色软件》\HisWebServiceTest\DataFormat\obj\Debug\DataFormat.dll
+D:\《绿色软件》\HisWebServiceTest\DataFormat\obj\Debug\DataFormat.pdb

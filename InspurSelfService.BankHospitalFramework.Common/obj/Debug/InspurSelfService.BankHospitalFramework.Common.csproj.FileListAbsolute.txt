@@ -1,0 +1,17 @@
+D:\Inspur\IHSS-V3.0\src\Adapter\InspurSelfService.Hospital\InspurSelfService.BankHospitalFramework.Common\bin\Debug\InspurSelfService.BankHospitalFramework.Common.dll
+D:\Inspur\IHSS-V3.0\src\Adapter\InspurSelfService.Hospital\InspurSelfService.BankHospitalFramework.Common\bin\Debug\InspurSelfService.BankHospitalFramework.Common.pdb
+D:\Inspur\IHSS-V3.0\src\Adapter\InspurSelfService.Hospital\InspurSelfService.BankHospitalFramework.Common\obj\Debug\InspurSelfService.BankHospitalFramework.Common.dll
+D:\Inspur\IHSS-V3.0\src\Adapter\InspurSelfService.Hospital\InspurSelfService.BankHospitalFramework.Common\obj\Debug\InspurSelfService.BankHospitalFramework.Common.pdb
+D:\Inspur\项目资料\济南市立一院\src\Adapter\InspurSelfService.Hospital\InspurSelfService.BankHospitalFramework.Common\bin\Debug\InspurSelfService.BankHospitalFramework.Common.dll
+D:\Inspur\项目资料\济南市立一院\src\Adapter\InspurSelfService.Hospital\InspurSelfService.BankHospitalFramework.Common\bin\Debug\InspurSelfService.BankHospitalFramework.Common.pdb
+D:\Inspur\项目资料\济南市立一院\src\Adapter\InspurSelfService.Hospital\InspurSelfService.BankHospitalFramework.Common\obj\Debug\InspurSelfService.BankHospitalFramework.Common.dll
+D:\Inspur\项目资料\济南市立一院\src\Adapter\InspurSelfService.Hospital\InspurSelfService.BankHospitalFramework.Common\obj\Debug\InspurSelfService.BankHospitalFramework.Common.pdb
+D:\《项目资料》\济南市立一院\src\Adapter\InspurSelfService.Hospital\InspurSelfService.BankHospitalFramework.Common\bin\Debug\InspurSelfService.BankHospitalFramework.Common.dll
+D:\《项目资料》\济南市立一院\src\Adapter\InspurSelfService.Hospital\InspurSelfService.BankHospitalFramework.Common\bin\Debug\InspurSelfService.BankHospitalFramework.Common.pdb
+D:\《项目资料》\济南市立一院\src\Adapter\InspurSelfService.Hospital\InspurSelfService.BankHospitalFramework.Common\obj\Debug\InspurSelfService.BankHospitalFramework.Common.csprojResolveAssemblyReference.cache
+D:\《项目资料》\济南市立一院\src\Adapter\InspurSelfService.Hospital\InspurSelfService.BankHospitalFramework.Common\obj\Debug\InspurSelfService.BankHospitalFramework.Common.dll
+D:\《项目资料》\济南市立一院\src\Adapter\InspurSelfService.Hospital\InspurSelfService.BankHospitalFramework.Common\obj\Debug\InspurSelfService.BankHospitalFramework.Common.pdb
+D:\《绿色软件》\HisWebServiceTest\InspurSelfService.BankHospitalFramework.Common\bin\Debug\InspurSelfService.BankHospitalFramework.Common.dll
+D:\《绿色软件》\HisWebServiceTest\InspurSelfService.BankHospitalFramework.Common\bin\Debug\InspurSelfService.BankHospitalFramework.Common.pdb
+D:\《绿色软件》\HisWebServiceTest\InspurSelfService.BankHospitalFramework.Common\obj\Debug\InspurSelfService.BankHospitalFramework.Common.dll
+D:\《绿色软件》\HisWebServiceTest\InspurSelfService.BankHospitalFramework.Common\obj\Debug\InspurSelfService.BankHospitalFramework.Common.pdb

@@ -1,0 +1,8 @@
+【传入】
+QueryPatientInfo 
+ 002
+【传出】
+<Response>
+ <ResultCode>1</ResultCode>
+ <ErrorMsg>交易失败</ErrorMsg>
+</Response>

@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<!--
+********适配器V3.0《Adapter.His.xml》使用说明********
+【注】：VS编译动态库前须设置该文件“复制到输出目录”属性为“始终复制”或者“如果较新则复制”。
+【注】：手动复制到交易控制器TransactionServer时须一并复制到与动态库同级目录。
+
+1.method【属性】
+（1）name：[主键值]必填项且method节点集中唯一
+（2）call：[必选项]通过“自定义接口管理器”进行接口对接调用
+（3）description：[可选项]方法摘要
+2.params
+param【属性】
+（1）to：[主键值]必填项且param节点集中唯一
+（2）from：[mode已选时为必选项；mode未选时from值过滤]
+（3）mode：[可选项]system值：标识接收外部参数集；custom值：标识接收自定义参数集（可进行参数转换、自定义参数值等）
+（4）description：[可选项]
+-->
+<root xmlns="http://inspur.com/ihss/Validation">
+  <method name="CheckPatientByIdCardNo" call="Bindzhuce" log="true" description="患者HIS登记情况">
+    <params>
+      <param to="IDCard" from="IdCardNo" mode="system" description="证件号码	不空	String	IDCard	20"/>
+      <param to="CardType" from="CardType" mode="system" description="证件类型	固定值,his提供	String	CardType	2"/>
+      <param to="Sex" from="Sex" mode="system" description="性别	传编码1	男2	女3	其他	String	Sex	4"/>
+      <param to="Name" from="Name" mode="system" description="姓名	不空	String	Name	60"/>
+    </params>
+  </method>
+</root>

@@ -1,0 +1,4 @@
+D:\《绿色软件》\HisWebServiceTest\ControlUI\bin\Debug\ControlUI.dll
+D:\《绿色软件》\HisWebServiceTest\ControlUI\bin\Debug\ControlUI.pdb
+D:\《绿色软件》\HisWebServiceTest\ControlUI\obj\Debug\ControlUI.dll
+D:\《绿色软件》\HisWebServiceTest\ControlUI\obj\Debug\ControlUI.pdb

@@ -1,0 +1,165 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<!--
+********适配器V3.0《Adapter.His.xml》使用说明********
+【注】：VS编译动态库前须设置该文件“复制到输出目录”属性为“始终复制”或者“如果较新则复制”。
+【注】：手动复制到交易控制器TransactionServer时须一并复制到与动态库同级目录。
+
+1.method【属性】
+（1）name：[主键值]必填项且method节点集中唯一
+（2）call：[必选项]通过“自定义接口管理器”进行接口对接调用
+（3）log：[必选项]用于配置是否记录接口返回值文本日志
+（4）description：[可选项]方法摘要
+2.params
+param【属性】
+（1）to：[主键值]必填项且param节点集中唯一
+（2）from：[mode已选时为必选项；mode未选时from值过滤]
+（3）mode：[可选项]system值：标识接收外部参数集；custom值：标识接收自定义参数集（可进行参数转换、自定义参数值等）
+（4）type：[必选项]调用服务时，需要转化成的数据类型，默认为string
+（5）description：[可选项]
+-->
+<root xmlns="http://inspur.com/ihss/Validation">
+  <method name="Signin" call="1001" log="true" description="Signin:银行签到">
+    <params>
+      <param from="posId" to="posId" mode="system" type="string" description="银行机器编号"></param>
+      <param from="BMPNo" to="posId" mode="system" type="string" description="商户号"></param>
+      <param from="tradeTime" to="tradeTime" mode="system" type="string" description="交易时间"></param>
+      <param from="trace" to="trace" mode="system" type="string" description="终端流水号"></param>
+    </params>
+  </method>
+  <method name="Bind" call="1002" log="true" description="Bind:绑定">
+    <params>
+      <param from="posId" to="posId" mode="system" type="string" description="银行机器编号"></param>
+      <param from="trace" to="trace" mode="system" type="string" description="终端流水号"></param>
+      <param from="bankNumber" to="bankNumber" mode="system" type="string" description="借记卡卡号"></param>
+      <param from="trmtNo" to="trmtNo" mode="system" type="string" description="诊疗卡卡号"></param>
+      <param from="account" to="account" mode="system" type="string" description="诊疗卡账户"></param>
+      <param from="pwd" to="pwd" mode="system" type="string" description="银行卡密码"></param>
+      <param from="track2" to="track2" mode="system" type="string" description="二磁道数据"></param>
+      <param from="track3" to="track3" mode="system" type="string" description="三磁道数据"></param>
+      <param from="mac" to="mac" mode="system" type="string" description="MAC校验串"></param>
+      <param from="name" to="name" mode="system" type="string" description="姓名"></param>
+      <param from="IDCardNo" to="IDCardNo" mode="system" type="string" description="身份证号"></param>
+    </params>
+  </method>
+  <method name="Unbind" call="1003" log="true" description="Unbind:解绑">
+    <params>
+      <param from="posId" to="posId" mode="system" type="string" description="银行机器编号"></param>
+      <param from="trace" to="trace" mode="system" type="string" description="终端流水号"></param>
+      <param from="bankNumber" to="bankNumber" mode="system" type="string" description="借记卡卡号"></param>
+      <param from="trmtNo" to="trmtNo" mode="system" type="string" description="诊疗卡卡号"></param>
+      <param from="account" to="account" mode="system" type="string" description="诊疗卡账户"></param>
+      <param from="account" to="account" mode="system" type="string" description="银行卡密码"></param>
+      <param from="track2" to="track2" mode="system" type="string" description="二磁道数据"></param>
+      <param from="track3" to="track3" mode="system" type="string" description="三磁道数据"></param>
+      <param from="mac" to="mac" mode="system" type="string" description="MAC校验串"></param>
+      <param from="name" to="name" mode="system" type="string" description="姓名"></param>
+      <param from="IDCardNo" to="IDCardNo" mode="system" type="string" description="身份证号"></param>
+      <param from="amt" to="amt" mode="system" type="string" description="诊疗账户余额（解绑时余额须为0）"></param>
+    </params>
+  </method>
+  <method name="Recharge" call="1004" log="true" description="Recharge:充值（银行卡转账到诊疗卡）">
+    <params>
+      <param from="posId" to="posId" mode="system" type="string" description="银行机器编号"></param>
+      <param from="trace" to="trace" mode="system" type="string" description="终端流水号"></param>
+      <param from="bankNumber" to="bankNumber" mode="system" type="string" description="借记卡卡号"></param>
+      <param from="trmtNo" to="trmtNo" mode="system" type="string" description="诊疗卡卡号"></param>
+      <param from="account" to="account" mode="system" type="string" description="诊疗卡账户"></param>
+      <param from="account" to="account" mode="system" type="string" description="银行卡密码"></param>
+      <param from="track2" to="track2" mode="system" type="string" description="二磁道数据"></param>
+      <param from="track3" to="track3" mode="system" type="string" description="三磁道数据"></param>
+      <param from="mac" to="mac" mode="system" type="string" description="MAC校验串"></param>
+      <param from="amt" to="amt" mode="system" type="string" description="交易金额"></param>
+      <param from="settlementDate" to="settlementDate" mode="system" type="string" description="医院结算日期"></param>
+      <param from="cardFlag" to="cardFlag" mode="system" type="string" description="卡类型（1位—0:非联名卡 1: 联名卡)"></param>
+    </params>
+  </method>
+  <method name="RechargeReverse" call="1005" log="true" description="RechargeReverse:充值冲正（转账诊疗卡失败时）">
+    <params>
+      <param from="posId" to="posId" mode="system" type="string" description="银行机器编号"></param>
+      <param from="trace" to="trace" mode="system" type="string" description="终端流水号"></param>
+      <param from="bankNumber" to="bankNumber" mode="system" type="string" description="借记卡卡号"></param>
+      <param from="trmtNo" to="trmtNo" mode="system" type="string" description="诊疗卡卡号"></param>
+      <param from="account" to="account" mode="system" type="string" description="诊疗卡账户"></param>
+      <param from="account" to="account" mode="system" type="string" description="银行卡密码"></param>
+      <param from="track2" to="track2" mode="system" type="string" description="二磁道数据"></param>
+      <param from="track3" to="track3" mode="system" type="string" description="三磁道数据"></param>
+      <param from="mac" to="mac" mode="system" type="string" description="MAC校验串"></param>
+      <param from="amt" to="amt" mode="system" type="string" description="交易金额"></param>
+      <param from="settlementDate" to="settlementDate" mode="system" type="string" description="医院结算日期"></param>
+      <param from="CSPTrace" to="CSPTrace" mode="system" type="string" description="原CSP交易流水号"></param>
+    </params>
+  </method>
+  <method name="Refund" call="1006" log="true" description="Refund:退款（诊疗卡转账银行卡）">
+    <params>
+      <param from="posId" to="posId" mode="system" type="string" description="银行机器编号"></param>
+      <param from="trace" to="trace" mode="system" type="string" description="终端流水号"></param>
+      <param from="bankNumber" to="bankNumber" mode="system" type="string" description="借记卡卡号"></param>
+      <param from="trmtNo" to="trmtNo" mode="system" type="string" description="诊疗卡卡号"></param>
+      <param from="account" to="account" mode="system" type="string" description="诊疗卡账户"></param>
+      <param from="account" to="account" mode="system" type="string" description="银行卡密码"></param>
+      <param from="track2" to="track2" mode="system" type="string" description="二磁道数据"></param>
+      <param from="track3" to="track3" mode="system" type="string" description="三磁道数据"></param>
+      <param from="mac" to="mac" mode="system" type="string" description="MAC校验串"></param>
+      <param from="amt" to="amt" mode="system" type="string" description="交易金额"></param>
+      <param from="settlementDate" to="settlementDate" mode="system" type="string" description="医院结算日期"></param>
+      <param from="cardFlag" to="cardFlag" mode="system" type="string" description="卡类型（1位—0:非联名卡 1: 联名卡)"></param>
+    </params>
+  </method>
+  <method name="QueryOriginalTradeRecord" call="007" log="true" description="QueryOriginalTradeRecord:查询原交易信息">
+    <params>
+      <param from="posId" to="posId" mode="system" type="string" description="银行机器编号"></param>
+      <param from="trace" to="trace" mode="system" type="string" description="终端流水号"></param>
+      <param from="bankNumber" to="bankNumber" mode="system" type="string" description="借记卡卡号"></param>
+      <param from="trmtNo" to="trmtNo" mode="system" type="string" description="诊疗卡卡号"></param>
+      <param from="account" to="account" mode="system" type="string" description="诊疗卡账户"></param>
+      <param from="account" to="account" mode="system" type="string" description="银行卡密码"></param>
+      <param from="track2" to="track2" mode="system" type="string" description="二磁道数据"></param>
+      <param from="track3" to="track3" mode="system" type="string" description="三磁道数据"></param>
+      <param from="mac" to="mac" mode="system" type="string" description="MAC校验串"></param>
+    </params>
+  </method>
+  <method name="QueryBankCardAccountInfo" call="1022" log="true" description="QueryBankCardAccountInfo:查询银行卡账户信息">
+    <params>
+      <param from="posId" to="posId" mode="system" description="银行机器编号"></param>
+      <param from="trace" to="trace" mode="system" type="string" description="终端流水号"></param>
+      <param from="bankNumber" to="bankNumber" mode="system" type="string" description="借记卡卡号"></param>
+      <param from="trmtNo" to="trmtNo" mode="system" type="string" description="诊疗卡卡号"></param>
+      <param from="account" to="account" mode="system" type="string" description="诊疗卡账户"></param>
+      <param from="account" to="account" mode="system" type="string" description="银行卡密码"></param>
+      <param from="track2" to="track2" mode="system" type="string" description="二磁道数据"></param>
+      <param from="track3" to="track3" mode="system" type="string" description="三磁道数据"></param>
+      <param from="mac" to="mac" mode="system" type="string" description="MAC校验串"></param>
+    </params>
+  </method>
+  <method name="BankBalance" call="1023" log="true" description="BankBalance:查询余额">
+    <params>
+      <param from="posId" to="posId" mode="system" type="string" description="银行机器编号"></param>
+      <param from="trace" to="trace" mode="system" type="string" description="终端流水号"></param>
+      <param from="bankNumber" to="bankNumber" mode="system" type="string" description="借记卡卡号"></param>
+      <param from="trmtNo" to="trmtNo" mode="system" type="string" description="诊疗卡卡号"></param>
+      <param from="account" to="account" mode="system" type="string" description="诊疗卡账户"></param>
+      <param from="account" to="account" mode="system" type="string" description="银行卡密码"></param>
+      <param from="track2" to="track2" mode="system" type="string" description="二磁道数据"></param>
+      <param from="track3" to="track3" mode="system" type="string" description="三磁道数据"></param>
+      <param from="mac" to="mac" mode="system" type="string" description="MAC校验串"></param>
+    </params>
+  </method>
+  <method name="CheckBankPwd" call="1023" log="true" description="CheckBankPwd:验证银行卡密码">
+    <params>
+      <param from="posId" to="posId" mode="system" type="string" description="银行机器编号"></param>
+      <param from="trace" to="trace" mode="system" type="string" description="终端流水号"></param>
+      <param from="bankNumber" to="bankNumber" mode="system" type="string" description="借记卡卡号"></param>
+      <param from="trmtNo" to="trmtNo" mode="system" type="string" description="诊疗卡卡号"></param>
+      <param from="account" to="account" mode="system" type="string" description="诊疗卡账户"></param>
+      <param from="pwd" to="pwd" mode="system" type="string" description="银行卡密码"></param>
+      <param from="track2" to="track2" mode="system" type="string" description="二磁道数据"></param>
+      <param from="track3" to="track3" mode="system" type="string" description="三磁道数据"></param>
+      <param from="mac" to="mac" mode="system" type="string" description="MAC校验串"></param>
+    </params>
+  </method>
+  <method name="BankCardClassDownload"  call="1021" log="true" description="BankCardClassDownload:卡表下载">
+    <params>
+      <param from="trace" to="trace" mode="null" type="string" description="流水号"/>
+    </params>
+  </method>
+</root>

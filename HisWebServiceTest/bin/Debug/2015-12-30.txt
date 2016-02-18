@@ -1,0 +1,491 @@
+【传入】
+CreateCardAddPosit
+000000104
+高建
+1986-09-08
+370103198609084510
+汉族
+济南市市中区英雄山路21号总站宿舍旧楼
+00000000
+201512301056360101
+pwd
+100
+01
+0101
+【传出】
+
+【传入】
+CreateCardAddPosit
+000000104
+02
+高建
+1986-09-08
+370103198609084510
+汉族
+济南市市中区英雄山路21号总站宿舍旧楼
+00000000
+201512301056360101
+pwd
+100
+01
+0101
+【传出】
+<Response>
+ <ResultCode>1</ResultCode>
+ <ErrorMsg>交易失败</ErrorMsg>
+</Response>
+【传入】
+CreateCardAddPosit
+000000104
+高建
+男
+1986-09-08
+370103198609084510
+汉族
+济南市市中区英雄山路21号总站宿舍旧楼
+00000000
+201512301056360101
+pwd
+100
+01
+0101
+【传出】
+<Response>
+ <ResultCode>1</ResultCode>
+ <ErrorMsg>交易失败</ErrorMsg>
+</Response>
+【传入】
+CreateCardAddPosit
+000000104
+高建
+男
+1986-09-08
+370103198609084510
+汉族
+济南市市中区英雄山路21号总站宿舍旧楼
+00000000
+201512301056360101
+pwd
+100
+01
+0101
+【传出】
+<Response>
+ <ResultCode>1</ResultCode>
+ <ErrorMsg>交易失败</ErrorMsg>
+</Response>
+【传入】
+CreateCardAddPosit
+000000104
+高建
+男
+1986-09-08
+370103198609084510
+汉族
+济南市市中区英雄山路21号总站宿舍旧楼
+00000000
+201512301056360101
+pwd
+100
+01
+0101
+【传出】
+<Response>
+ <ResultCode>1</ResultCode>
+ <ErrorMsg>交易失败</ErrorMsg>
+</Response>
+【传入】
+CreateCardAddPosit
+000000104
+高建
+男
+1986-09-08
+370103198609084510
+汉族
+济南市市中区英雄山路21号总站宿舍旧楼
+00000000
+201512301056360101
+pwd
+100
+01
+0101
+【传出】
+<Response>
+ <ResultCode>1</ResultCode>
+ <ErrorMsg>交易失败</ErrorMsg>
+</Response>
+【传入】
+CreateCardAddPosit
+000000104
+高建
+男
+1986-09-08
+370103198609084510
+汉族
+济南市市中区英雄山路21号总站宿舍旧楼
+00000000
+201512301056360101
+pwd
+100
+01
+0101
+【传出】
+<Response>
+ <ResultCode>1</ResultCode>
+ <ErrorMsg>交易失败</ErrorMsg>
+</Response>
+【传入】
+CreateCardAddPosit
+000000104
+高建
+男
+1986-09-08
+370103198609084510
+汉族
+济南市市中区英雄山路21号总站宿舍旧楼
+00000000
+201512301056360101
+pwd
+100
+01
+0101
+【传出】
+<Response>
+ <ResultCode>1</ResultCode>
+ <ErrorMsg>交易失败</ErrorMsg>
+</Response>
+【传入】
+CreateCardAddPosit
+000000104
+高建
+男
+1986-09-08
+370103198609084510
+汉族
+济南市市中区英雄山路21号总站宿舍旧楼
+00000000
+201512301056360101
+pwd
+100
+01
+0101
+【传出】
+<Response>
+ <ResultCode>1</ResultCode>
+ <ErrorMsg>交易失败</ErrorMsg>
+</Response>
+【传入】
+CreateCardAddPosit
+000000104
+高建
+男
+1986-09-08
+370103198609084510
+汉族
+济南市市中区英雄山路21号总站宿舍旧楼
+00000000
+201512301056360101
+pwd
+100
+01
+0101
+【传出】
+<Response>
+ <ResultCode>1</ResultCode>
+ <ErrorMsg>交易失败</ErrorMsg>
+</Response>
+【传入】
+CreateCardAddPosit
+000000104
+高建
+男
+1986-09-08
+370103198609084510
+汉族
+济南市市中区英雄山路21号总站宿舍旧楼
+00000000
+201512301056360101
+pwd
+100
+01
+0101
+【传出】
+<Response>
+ <ResultCode>1</ResultCode>
+ <ErrorMsg>交易失败</ErrorMsg>
+</Response>
+【传入】
+CreateCardAddPosit
+000000104
+高建
+男
+1986-09-08
+370103198609084510
+汉族
+济南市市中区英雄山路21号总站宿舍旧楼
+00000000
+201512301056360101
+pwd
+100
+01
+0101
+【传出】
+<Response>
+ <ResultCode>1</ResultCode>
+ <ErrorMsg>交易失败</ErrorMsg>
+</Response>
+【传入】
+CreateCardAddPosit
+000000104
+02
+高建
+1986-09-08
+370103198609084510
+汉族
+济南市市中区英雄山路21号总站宿舍旧楼
+00000000
+201512301056360101
+pwd
+100
+01
+0101
+【传出】
+<Response>
+ <ResultCode>0</ResultCode>
+ <ErrorMsg>交易成功</ErrorMsg>
+ <ResultData>
+  <CardNo>000000104</CardNo>
+  <PatientID>39801</PatientID>
+  <Balance>99.00</Balance>
+ </ResultData>
+</Response>
+【传入】
+CreateCardAddPosit
+000000104
+高建
+汉
+1986-09-08
+370103198609084510
+汉族
+济南市市中区英雄山路21号总站宿舍旧楼
+00000000
+201512301056360101
+pwd
+100
+01
+0101
+【传出】
+<Response>
+ <ResultCode>1</ResultCode>
+ <ErrorMsg>交易失败:卡号重复！</ErrorMsg>
+</Response>
+【传入】
+CreateCardAddPosit
+100000104
+高建
+汉
+1986-09-08
+370103198609084510
+汉族
+济南市市中区英雄山路21号总站宿舍旧楼
+00000000
+201512301056360101
+pwd
+100
+01
+0101
+【传出】
+<Response>
+ <ResultCode>0</ResultCode>
+ <ErrorMsg>交易成功</ErrorMsg>
+ <ResultData>
+  <CardNo>100000104</CardNo>
+  <PatientID>39802</PatientID>
+  <Balance>99.00</Balance>
+ </ResultData>
+</Response>
+【传入】
+CreateCardAddPosit
+200000104
+高建
+汉
+1986-09-08
+370103198609084510
+汉族
+济南市市中区英雄山路21号总站宿舍旧楼
+00000000
+201512301056360101
+pwd
+100
+01
+0101
+【传出】
+<Response>
+ <ResultCode>0</ResultCode>
+ <ErrorMsg>交易成功</ErrorMsg>
+ <ResultData>
+  <CardNo>200000104</CardNo>
+  <PatientID>39803</PatientID>
+  <Balance>99.00</Balance>
+ </ResultData>
+</Response>
+【传入】
+CreateCardAddPosit
+300000104
+高建
+男
+1986-09-08
+370103198609084510
+汉族
+济南市市中区英雄山路21号总站宿舍旧楼
+00000000
+201512301056360101
+pwd
+100
+01
+0101
+【传出】
+<Response>
+ <ResultCode>0</ResultCode>
+ <ErrorMsg>交易成功</ErrorMsg>
+ <ResultData>
+  <CardNo>300000104</CardNo>
+  <PatientID>39804</PatientID>
+  <Balance>99.00</Balance>
+ </ResultData>
+</Response>
+【传入】
+ZYAddDeposit 
+0000116 
+  100 
+  01 
+   
+  2015112200000001 
+  801001
+【传出】
+<Response>
+ <ResultCode>1</ResultCode>
+ <ErrorMsg>交易失败:该病人不存在住院医疗中！</ErrorMsg>
+</Response>
+【传入】
+ZYAddDeposit 
+0003933 
+  100 
+  01 
+   
+  2015112200000001 
+  801001
+【传出】
+<Response>
+ <ResultCode>1</ResultCode>
+ <ErrorMsg>交易失败</ErrorMsg>
+ <ReceiptNo></ReceiptNo>
+ <CardYuE>0</CardYuE>
+</Response>
+【传入】
+ZYAddDeposit 
+0003933 
+  100 
+  01 
+   
+  2015112200000001 
+  801001
+【传出】
+<Response>
+ <ResultCode>1</ResultCode>
+ <ErrorMsg>交易失败</ErrorMsg>
+ <ReceiptNo></ReceiptNo>
+ <CardYuE>0</CardYuE>
+</Response>
+【传入】
+ZYAddDeposit 
+0003933 
+  100 
+  01 
+   
+  2015112200000001 
+  801001
+【传出】
+<Response>
+ <ResultCode>1</ResultCode>
+ <ErrorMsg>交易失败</ErrorMsg>
+ <ReceiptNo></ReceiptNo>
+ <CardYuE>0</CardYuE>
+</Response>
+【传入】
+ZYAddDeposit 
+0003933 
+  100 
+  01 
+   
+  2015112200000001 
+  801001
+【传出】
+<Response>
+ <ResultCode>1</ResultCode>
+ <ErrorMsg>交易失败</ErrorMsg>
+ <ReceiptNo></ReceiptNo>
+ <CardYuE>0</CardYuE>
+</Response>
+【传入】
+ZYAddDeposit 
+0003933 
+  100 
+  01 
+   
+  2015112200000001 
+  801001
+【传出】
+<Response>
+ <ResultCode>1</ResultCode>
+ <ErrorMsg>交易失败</ErrorMsg>
+ <ReceiptNo></ReceiptNo>
+ <CardYuE>0</CardYuE>
+</Response>
+【传入】
+ZYAddDeposit 
+0003933 
+  100 
+  01 
+   
+  2015112200000001 
+  801001
+【传出】
+<Response>
+ <ResultCode>1</ResultCode>
+ <ErrorMsg>交易失败</ErrorMsg>
+ <ReceiptNo></ReceiptNo>
+ <CardYuE>0</CardYuE>
+</Response>
+【传入】
+ZYAddDeposit 
+0003933 
+  100 
+  01 
+   
+  2015112200000001 
+  801001
+【传出】
+<Response>
+ <ResultCode>1</ResultCode>
+ <ErrorMsg>交易失败</ErrorMsg>
+ <ReceiptNo></ReceiptNo>
+ <CardYuE>0</CardYuE>
+</Response>
+【传入】
+ZYAddDeposit 
+0003933 
+  100 
+  01 
+   
+  2015112200000001 
+  801001
+【传出】
+<Response>
+ <ResultCode>0</ResultCode>
+ <ErrorMsg>交易成功</ErrorMsg>
+ <ResultData>
+  <ReceiptNo>2015112200000001</ReceiptNo>
+  <CardYuE>-10001.75</CardYuE>
+ </ResultData>
+</Response>

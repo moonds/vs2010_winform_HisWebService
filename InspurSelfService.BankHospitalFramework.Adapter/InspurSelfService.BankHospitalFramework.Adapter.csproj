@@ -1,0 +1,186 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{8EB75B42-B833-4D0A-BD59-3FA52C4A62B4}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>InspurSelfService.BankHospitalFramework.Adapter</RootNamespace>
+    <AssemblyName>Adapter_BASE</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>TRACE;debug</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Debug\InspurSelfService.BankHospitalFramework.Adapter.XML</DocumentationFile>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="log4net, Version=1.2.11.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>dll\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=1.1.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>.\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Oracle.DataAccess, Version=2.112.1.0, Culture=neutral, PublicKeyToken=89b483f429c47342, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>.\Oracle.DataAccess.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Adapter.BankCall.cs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="Adapter.His.cs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="Adapter.HisCall.cs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="Adapter.Hss.cs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="Common\AccessAssemblyInfo.cs" />
+    <Compile Include="Common\BankTestData.cs" />
+    <Compile Include="Common\BaseEntity.cs" />
+    <Compile Include="Common\BasePage.cs" />
+    <Compile Include="Common\CustomConfigurationManager.cs" />
+    <Compile Include="Common\DatabaseAccess.cs" />
+    <Compile Include="Common\Extensions.cs" />
+    <Compile Include="Common\HisJsonHelper.cs" />
+    <Compile Include="Common\IBaseEntity.cs" />
+    <Compile Include="Common\IJsonHelper.cs" />
+    <Compile Include="Common\JsonHelper.cs" />
+    <Compile Include="Common\LogUtility.cs" />
+    <Compile Include="Common\OdbcHelper.cs" />
+    <Compile Include="Common\OdbcHelperParameterCache.cs" />
+    <Compile Include="Common\OracleHelper.cs" />
+    <Compile Include="Common\OracleHelperParameterCache.cs" />
+    <Compile Include="Common\ShortLinkSocketHelper.cs" />
+    <Compile Include="Common\SqlHelper.cs" />
+    <Compile Include="Common\SqlHelperParameterCache.cs" />
+    <Compile Include="Common\WebServiceHelper.cs" />
+    <Compile Include="Common\XMLHelper.cs" />
+    <Compile Include="Common\LongLinkSocketHelper.cs" />
+    <Compile Include="CustomInterfaceManager\HisCustomInterfaceManager.cs" />
+    <Compile Include="CustomInterfaceManager\BankCustomInterfaceManager.cs" />
+    <Compile Include="CustomInterfaceManager\HisCallCustomInterfaceManager.cs" />
+    <Compile Include="CustomInterfaceManager\BankCallCustomInterfaceManager.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Adapter.Bank.cs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="Common\TPSVService.cs">
+      <SubType>Component</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Adapter.BankCall.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Adapter.HisCall.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="BankTestData.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="InputOutputExample\IHSSCallBank\IHSSCallBank-StringJoin.xml" />
+    <Content Include="InputOutputExample\IHSSCallBank\IHSSCallBank-XML.xml" />
+    <Content Include="InputOutputExample\IHSSCallHis\IHSSCallHis-StringJoin.xml" />
+    <Content Include="InputOutputExample\IHSSCallHis\IHSSCallHis-Oracle.xml" />
+    <Content Include="InputOutputExample\IHSSCallHis\IHSSCallHis-SQLServer.xml" />
+    <Content Include="InputOutputExample\IHSSCallHis\IHSSCallHis-Json.xml" />
+    <Content Include="InputOutputExample\IHSSCallHis\IHSSCallHis-XML.xml" />
+    <Content Include="InputOutputExample\readme.txt" />
+    <Content Include="InputOutputExample\tech-doc.txt" />
+    <Content Include="log4net.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Adapter.His.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Adapter.Bank.xml">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Newtonsoft.Json.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Oracle.DataAccess.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Adapter.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="AdapterXMLSchema.xsd">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="IHSSdoc\浪潮银医自助服务系统HIS接口定义（XX医院）.docx" />
+    <None Include="IHSSdoc\浪潮银医自助服务系统接口对接应用手册-针对基础版2014.docx" />
+    <None Include="IHSSdoc\浪潮银医自助服务系统银行接口定义（XX医院）.docx" />
+    <None Include="log4net.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="InputOutputExample\BankCallHis\" />
+    <Folder Include="InputOutputExample\HisCallBank\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\InspurSelfService.BankHospitalFramework.Common\InspurSelfService.BankHospitalFramework.Common.csproj">
+      <Project>{23AE5EB8-D2D4-42BB-9B29-47DF12DE1063}</Project>
+      <Name>InspurSelfService.BankHospitalFramework.Common</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
