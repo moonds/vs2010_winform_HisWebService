@@ -1043,8 +1043,9 @@ namespace HisWebServiceTest
         }
         private void treeView1_MouseUp(object sender, MouseEventArgs e)
         {
-             Point p = this.treeView1.PointToClient(new Point(e.X, e.Y));
-             TreeViewHitTestInfo info = this.treeView1.HitTest(p);
+         
+             TreeViewHitTestInfo info = this.treeView1.HitTest(e.X,e.Y);
+             TreeNode tnode = info.Node;
              string text = info.Node.Text;
              if (text != "")
              {
