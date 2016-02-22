@@ -138,7 +138,7 @@ namespace InspurSelfService.BankHospitalFramework.Adapter
         /// <param name="logFlag"></param>
         /// <param name="inParams"></param>
         /// <returns></returns>
-        private static object ASMX(string adapterTrace, log4net.ILog log, XmlDocument xmldoc, string methodName, Dictionary<string, string> systemParams, Dictionary<string, string> customParams, string terminalIp, out string callMethodName, out bool logFlag, out object inParams, ref Dictionary<string, string> returnParamsDictionary)
+        private static object  ASMX(string adapterTrace, log4net.ILog log, XmlDocument xmldoc, string methodName, Dictionary<string, string> systemParams, Dictionary<string, string> customParams, string terminalIp, out string callMethodName, out bool logFlag, out object inParams, ref Dictionary<string, string> returnParamsDictionary)
         {
             //服务地址：在Adapter.config中配置
             string HisWebService = CustomConfigurationManager.AppSettings["HisWebService"];

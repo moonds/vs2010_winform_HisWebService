@@ -43,7 +43,7 @@ namespace InspurSelfService.BankHospitalFramework.Adapter
                 AdapterHss adapterHss = new AdapterHss();
                 adapterHss.InsertLogTrade(TradeDetailId, DateTime.Now.ToString(), "H201", "GetRealTimeDepartmentSchedule", systemParamsXml, "0", "0");//报文类型int（0---发送 ，1---接收），日志类型Int（0---His 1---Bank）
 
-                //object retVal = HisCustomInterfaceManager.HisTrade(adapterTrace,out resultCodeMsg, log, terminalIp, System.Reflection.MethodBase.GetCurrentMethod(), systemParamsDictionary, customParamsDictionary);
+                //object retVal =    object retVal = HisCustomInterfaceManager.HisTrade(adapterTrace, out resultCodeMsg, log, terminalIp, System.Reflection.MethodBase.GetCurrentMethod(), systemParamsDictionary, customParamsDictionary, ref returnParamsDictionary); HisCustomInterfaceManager.HisTrade(adapterTrace,out resultCodeMsg, log, terminalIp, System.Reflection.MethodBase.GetCurrentMethod(), systemParamsDictionary, customParamsDictionary);
 
                 resultCodeMsg = "S#0#测试成功";
                 ret = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");

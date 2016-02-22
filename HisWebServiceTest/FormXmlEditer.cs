@@ -27,6 +27,10 @@ using InspurSelfService.BankHospitalFramework.Adapter;
  * 0217 添加方法分类
  * 0218 添加datagridview拖拽排序
  *      修复拖拽后单元格不能编辑问题（拖拽改为只能行头拖拽 ）
+ * 0219 增加分类节点新增参数
+ *      修复新增参数无法新增行问题
+ *      ？加载后dsInArgs为空问题，分类新增问题
+ *      新增时判断该名称是否存在
  * **/
 
 
@@ -56,15 +60,16 @@ namespace HisWebServiceTest
         //datagridview拖拽
         int IndexDel = 999;
         int IndexDrop = 999;
-      
+        //treeView右键菜单新增标志,新增分类标志
+        bool isAdd = false;
+        string nodetext = "";
+        string txtnameText = "";
 
         public FormXmlEditer()
         {
-
-            AdapterHis hiscall = new AdapterHis();
-            string str = "";
-
-            hiscall.NetTest(out str, "", "", "");
+            //AdapterHis hiscall = new AdapterHis();
+            //string str = "";
+            //hiscall.NetTest(out str, "", "", "");
             InitializeComponent();
             btnUp.Visible = btnDown.Visible = true;
             txth2.Text = h2.ToString();
@@ -78,99 +83,9 @@ namespace HisWebServiceTest
             txtWSAddress.Text = System.Configuration.ConfigurationManager.AppSettings["WebServiceAddress"];
             bindCombBox();
             string path1 = System.AppDomain.CurrentDomain.BaseDirectory;
-            path1 = path1.Replace(@"HisWebServiceTest\bin\Debug\", @"InspurSelfService.BankHospitalFramework.Adapter\adapter.his.xml");
-            xmlload(path1);
+            //path1 = path1.Replace(@"HisWebServiceTest\bin\Debug\", @"InspurSelfService.BankHospitalFramework.Adapter\adapter.his.xml");
+            //xmlload(path1);
         }
-
-
-        private void RowUp(DataGridViewSelectedRowCollection selectRows2, DataGridViewRowCollection rows, string colName)
-        {
-            DataGridViewRow[] selectRows = new DataGridViewRow[selectRows2.Count];
-
-            for (int i = 0; i < selectRows2.Count; i++)
-            {
-                selectRows[i] = selectRows2[i];
-            }
-
-            for (int i = 0; i < selectRows.Length; i++)
-            {
-                for (int j = i + 1; j < selectRows.Length; j++)
-                {
-                    if (selectRows[i].Index > selectRows[j].Index)
-                    {
-                        DataGridViewRow rwo = selectRows[i];
-                        selectRows[i] = selectRows[j];
-                        selectRows[j] = rwo;
-                    }
-                }
-            }
-
-            if (selectRows[0].Index == 0)
-            {
-                MessageBox.Show("已是第一行！");
-                return;
-            }
-
-            int motionNumber = selectRows[0].Index - 1;
-            foreach (DataGridViewRow row in selectRows)
-            {
-                for (int i = row.Index - 1; i >= motionNumber; i--)
-                {
-                    object value = row.Cells[colName].Value;
-                    row.Cells[colName].Value = rows[i].Cells[colName].Value;
-                    rows[i].Cells[colName].Value = value;
-                }
-                motionNumber++;
-
-                dataGridView1.Sort(dataGridView1.Columns[colName], ListSortDirection.Ascending);
-                Application.DoEvents();
-            }
-        }
-
-        private void RowNext(DataGridViewSelectedRowCollection selectRows2, DataGridViewRowCollection rows, string colName)
-        {
-            DataGridViewRow[] selectRows = new DataGridViewRow[selectRows2.Count];
-
-            for (int i = 0; i < selectRows2.Count; i++)
-            {
-                selectRows[i] = selectRows2[i];
-            }
-
-            for (int i = 0; i < selectRows.Length; i++)
-            {
-                for (int j = i + 1; j < selectRows.Length; j++)
-                {
-                    if (selectRows[i].Index < selectRows[j].Index)
-                    {
-                        DataGridViewRow rwo = selectRows[i];
-                        selectRows[i] = selectRows[j];
-                        selectRows[j] = rwo;
-                    }
-                }
-            }
-
-            if (selectRows[0].Index == rows.Count - 1)//这里的表格未启用添加，所以-1 启动的话得-2
-            {
-                MessageBox.Show("已是最后一行！");
-                return;
-            }
-
-            int motionNumber = selectRows[0].Index + 1;
-            foreach (DataGridViewRow row in selectRows)
-            {
-                for (int i = row.Index + 1; i <= motionNumber; i++)
-                {
-                    object value = row.Cells[colName].Value;
-                    row.Cells[colName].Value = rows[i].Cells[colName].Value;
-                    rows[i].Cells[colName].Value = value;
-                }
-                motionNumber--;
-
-                dataGridView1.Sort(dataGridView1.Columns[colName], ListSortDirection.Ascending);
-                Application.DoEvents();
-            }
-        }
-
 
         void ClearAll()
         {
@@ -178,6 +93,7 @@ namespace HisWebServiceTest
             dsInArgs = null;
             dsOutArgs = null;
         }
+
         #region TabControl选项卡
         private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -305,35 +221,35 @@ namespace HisWebServiceTest
         {
             xmldoc.Save(textBox1.Text);
         }
+        //分类右键新增参数方法
+        private void toolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            isAdd = true;
+            lblMethodName.Text = "";
+            if (dsInArgs == null)
+            {
+                tsrslblNotice.Text = "请将adapter.his.xml文件拖拽至“adpate.his.xml目的地”";
+                return;
+            }
+            foreach (Control ctl in panel1.Controls)
+            {
+                if (ctl is TextBox)
+                {
+                    TextBox txt = (TextBox)ctl;
+                    txt.Text = "";
+                }
+            }
+            dsInArgs.Clear();
+            dsOutArgs.Clear();
+            dataGridView1.AutoGenerateColumns = false;
+            dataGridView2.AutoGenerateColumns = false;
+
+            dataGridView1.DataSource = dsInArgs.Tables[0];
+            dataGridView2.DataSource = dsOutArgs.Tables[0];
+        }
         #endregion
 
         #region 拖拽读取文件
-        private void textBox1_DragDrop(object sender, DragEventArgs e)
-        {
-            var filename = (string[])e.Data.GetData(DataFormats.FileDrop);
-            textBox1.Text = filename[0];
-            //加载方法列表，并在groupbox1和groupbox2中显示方法列表中第一条入参和出参情况
-            //对xml文件进行操作。
-            if (xmlload(filename[0]))
-            {
-                menuStrip2.Enabled = true;
-                //loadXmlNodeAddControl(xmldoc, checkedListBox1.Items[0].ToString());
-                lblMethodName.Text = checkedListBox1.Items[0].ToString();
-            }
-            else
-            {
-                tsrslblNotice.Text = "加载xml文件失败" + DateTime.Now.ToLongTimeString();
-            }
-
-
-        }
-        private void textBox1_DragEnter(object sender, DragEventArgs e)
-        {
-            if (e.Data.GetDataPresent(DataFormats.FileDrop))
-            {
-                e.Effect = DragDropEffects.All;
-            }
-        }
         private void checkedListBox1_DragDrop(object sender, DragEventArgs e)
         {
             treeView1.Nodes.Clear();
@@ -375,6 +291,7 @@ namespace HisWebServiceTest
         {
             if (treeView1.SelectedNode != null)
             {
+                isAdd = false;
                 ClearAll();
                 string type = treeView1.SelectedNode.Text;
                 //读取xml节点加载至checkedlistbox
@@ -403,8 +320,27 @@ namespace HisWebServiceTest
                         checkedListBox1.Items.Add(node.Attributes["name"].Value);
                     }
                 }
-
+                if (checkedListBox1.Items.Count != 0)
+                    loadXmlNodeAddControl(xmldoc, checkedListBox1.Items[0].ToString());
             }
+        }
+        //treeView
+        private void treeView1_MouseUp(object sender, MouseEventArgs e)
+        {
+            TreeViewHitTestInfo info = this.treeView1.HitTest(e.X, e.Y);
+            if (info.Node == null) return;
+            TreeNode tnode = info.Node;
+            treeView1.SelectedNode = tnode;
+            nodetext = info.Node.Text;
+            if (nodetext != "")
+            {
+                if (e.Button == MouseButtons.Right)
+                {
+                    contextMenuStrip2.Show(treeView1, new Point(e.X, e.Y));
+                }
+            }
+            dsInArgsCount = 0;
+            dsOutArgsCount = 0;
         }
         //辅助读取xml方法
         public static string ReadFile(string strPath)
@@ -505,7 +441,9 @@ namespace HisWebServiceTest
                     break;
                 case "测试":
                     //todo:组织xml串
-                    //todo:或者反射dll
+                    bool iSuccess;
+                    string inxml = SetParamsDictionaryXml(textBox1.Text, lblMethodName.Text);
+                    txtInput.Text = xmlformat.xmlFormatByStock(inxml, out iSuccess);
                     break;
                 default: break;
 
@@ -533,9 +471,25 @@ namespace HisWebServiceTest
                 string finalerror = "";
                 for (int i = 0; i < checkedcount; i++)
                 {
-                    checkedListBox1.CheckedIndices[i].ToString();
                     string methodname = checkedListBox1.CheckedItems[i].ToString();
                     XmlHelper.DelXmlNode(ref xmldoc, methodname, "method", out error);
+                    xmldoc.Save(textBox1.Text);
+                    //更新左侧列表
+                    //并重新加载上一项或者下一项，如果本类无内容，则不予加载。
+                    int intindex= checkedListBox1.Items.IndexOf(checkedListBox1.CheckedItems[i]);
+                    checkedListBox1.Items.RemoveAt(intindex);
+                    if (checkedListBox1.Items.Count == 0)
+                    {
+                       //分类下的所有方法为空了如何处理
+
+                    }
+                    else
+                    {
+                        //分类下方法不为空的处理，加载上一项，或者下一项（下一项index与删除项index相同）。
+                        if (intindex - 1 >= 0)
+                            intindex = intindex - 1;
+                         loadXmlNodeAddControl(xmldoc, checkedListBox1.Items[intindex].ToString());
+                    }
                     if (error != "")
                         finalerror += error + ",";
                 }
@@ -626,6 +580,7 @@ namespace HisWebServiceTest
                         {
                             case "name":
                                 txtname.Text = value;
+                                txtnameText = value;
                                 break;
                             case "call":
                                 txtcall.Text = value;
@@ -651,27 +606,27 @@ namespace HisWebServiceTest
         }
         //【自动填充出入参固定内容】
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (dataGridView1.CurrentCell.ColumnIndex == 1 && (dataGridView1.CurrentRow.Index > dsInArgsCount - 1))
+        {//dataGridView1.CurrentCell.ColumnIndex == 0 &&
+            if ((dataGridView1.CurrentRow.Index >= (dsInArgsCount - 1)))
             {
-                dataGridView1.CurrentRow.Cells[3].Value = "system";
-                dataGridView1.CurrentRow.Cells[4].Value = "string";
+                dataGridView1.CurrentRow.Cells["mode"].Value = "system";
+                dataGridView1.CurrentRow.Cells["type"].Value = "string";
             }
-            else if (dataGridView1.CurrentCell.ColumnIndex == 3 && (dataGridView1.CurrentRow.Index > dsInArgsCount - 1))
+            else if (dataGridView1.CurrentCell.ColumnIndex == 4 && (dataGridView1.CurrentRow.Index >= (dsInArgsCount - 1)))
                 dataGridView1.CurrentCell.Value = "system";
-            else if (dataGridView1.CurrentCell.ColumnIndex == 4 && (dataGridView1.CurrentRow.Index > dsInArgsCount - 1))
+            else if (dataGridView1.CurrentCell.ColumnIndex == 5 && (dataGridView1.CurrentRow.Index >= (dsInArgsCount - 1)))
                 dataGridView1.CurrentCell.Value = "string";
         }
         private void dataGridView2_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (dataGridView2.CurrentCell.ColumnIndex == 0 && (dataGridView2.CurrentRow.Index > dsInArgsCount - 1))
+        {//dataGridView2.CurrentCell.ColumnIndex == 0 &&
+            if ((dataGridView2.CurrentRow.Index > dsInArgsCount - 1))
             {
-                dataGridView2.CurrentRow.Cells[3].Value = "system";
-                dataGridView2.CurrentRow.Cells[4].Value = "string";
+                dataGridView2.CurrentRow.Cells["mode1"].Value = "system";
+                dataGridView2.CurrentRow.Cells["type1"].Value = "string";
             }
-            else if (dataGridView2.CurrentCell.ColumnIndex == 3 && (dataGridView2.CurrentRow.Index > dsInArgsCount - 1))
-                dataGridView2.CurrentCell.Value = "system";
             else if (dataGridView2.CurrentCell.ColumnIndex == 4 && (dataGridView2.CurrentRow.Index > dsInArgsCount - 1))
+                dataGridView2.CurrentCell.Value = "system";
+            else if (dataGridView2.CurrentCell.ColumnIndex == 5 && (dataGridView2.CurrentRow.Index > dsInArgsCount - 1))
                 dataGridView2.CurrentCell.Value = "string";
         }
         #endregion
@@ -680,6 +635,7 @@ namespace HisWebServiceTest
         //入参
         private void btnSaveInArgs_Click(object sender, EventArgs e)
         {
+            if (isAdd == true) return;
             if (dsInArgs == null)
             {
                 tsrslblNotice.Text = "请将adapter.his.xml文件拖拽至“adpate.his.xml目的地”";
@@ -707,6 +663,7 @@ namespace HisWebServiceTest
         //出参
         private void btnSaveOutArgs_Click(object sender, EventArgs e)
         {
+            if (isAdd == true) return;
             if (dsInArgs == null)
             {
                 tsrslblNotice.Text = "请将adapter.his.xml文件拖拽至“adpate.his.xml目的地”";
@@ -728,9 +685,10 @@ namespace HisWebServiceTest
         {
             if (dsInArgs == null)
             {
-                tsrslblNotice.Text = "请将adapter.his.xml文件拖拽至“adpate.his.xml目的地”";
+                tsrslblNotice.Text = "请将adapter.his.xml文件拖拽至“adpate.his.xml目的地”" + DateTime.Now.ToLongTimeString();
                 return;
             }
+            CheckIsExsit();
             string error;
 
             string insertStr = "";//String.Format(@"<method name='{0}' call='{1}' log='{2}' description='{3}' >", txtname.Text, txtcall.Text, txtlog.Text, txtdescription.Text);
@@ -773,14 +731,50 @@ namespace HisWebServiceTest
                 //0217改为先插入后删除
                 XmlNode node = null;
                 node = xmldoc.SelectSingleNode(string.Format("root/method[@name='{0}']", lblMethodName.Text));
+                //新增时找到分类最后一个方法
+                if (isAdd == true)
+                {
+                    XmlNodeList nodelist = xmldoc.SelectSingleNode("root").ChildNodes;
+                    int w = 0;
+                    for (int i = 0; i < nodelist.Count; i++)
+                    {
+                        if (nodelist[i] is XmlComment)
+                        {
+                            if (nodelist[i].InnerText == nodetext)
+                            {
+                                if (w == 0)
+                                {
+                                    w = 1;
+                                    continue;
+                                }
+                            }
+                            if (w == 1)
+                            {
+                                node = nodelist[i - 1];
+                                break;
+                            }
+                        }
+                    }
+                }
                 if (node != null)
                 {
                     XmlHelper.AddXmlNode(ref xmldoc, lblMethodName.Text, "method", insertStr, nodeinsert, node, "insertafter", out error);
-                    XmlHelper.DelXmlNode(ref xmldoc, lblMethodName.Text, "method", out error);
+                    if (isAdd == false)
+                    {
+                        XmlHelper.DelXmlNode(ref xmldoc, lblMethodName.Text, "method", out error);
+                    }
                     xmldoc.Save(textBox1.Text);
                 }
-                int index1 = CheckListBoxFind(lblMethodName.Text);
-                updateChecklistbox(index1, txtname.Text);
+                if (isAdd == false)
+                {
+                    int index1 = CheckListBoxFind(lblMethodName.Text);
+                    updateChecklistbox(index1, txtname.Text);
+                }
+                else
+                {
+                    checkedListBox1.Items.Add(txtname.Text);
+                }
+
                 //xmlload(textBox1.Text, txtname.Text);
                 tsrslblNotice.Text = "参数名称:" + txtname.Text + "及相关出入参保存成功," + DateTime.Now.ToLongDateString();
             }
@@ -893,7 +887,10 @@ namespace HisWebServiceTest
             switch (comboBox1.SelectedValue.ToString())
             {
                 case "1":
-                    string outPut = "";// hisClient.CallService(txtInput.Text.Trim());
+                    string outPut = "";
+                    //todo:调用HisTrade方法
+                    //流水号生成，resultCodeMsg声明，log，terminalip为10.10.10.10，
+                    // HisCustomInterfaceManager.HisTrade(adapterTrace, out resultCodeMsg, log, terminalIp, System.Reflection.MethodBase.GetCurrentMethod(), systemParamsDictionary, customParamsDictionary);
                     bool isSuccess;
                     string outFinal = xmlformat.xmlFormatByStock(outPut, out isSuccess);
                     if (isSuccess)
@@ -1041,20 +1038,7 @@ namespace HisWebServiceTest
                 }
             }
         }
-        private void treeView1_MouseUp(object sender, MouseEventArgs e)
-        {
-         
-             TreeViewHitTestInfo info = this.treeView1.HitTest(e.X,e.Y);
-             TreeNode tnode = info.Node;
-             string text = info.Node.Text;
-             if (text != "")
-             {
-                 if (e.Button == MouseButtons.Right)
-                 { 
-                    contextMenuStrip2.Show(treeView1,new Point(e.X,e.Y));
-                 }
-             }
-        }
+
         //打开文件位置
         private void OpenDialog_Click(object sender, EventArgs e)
         {
@@ -1126,7 +1110,6 @@ namespace HisWebServiceTest
         }
         #endregion
 
-
         private void checkedListBox1_KeyDown(object sender, KeyEventArgs e)
         {
             Keys keyc = e.KeyCode;
@@ -1134,11 +1117,9 @@ namespace HisWebServiceTest
             int keyv = e.KeyValue;
         }
 
-      
-
         //实现拖拽变换行顺序
         //点击后将row单独 读取并保存至DataRow中
-       
+
         //DrugDrop事件判断为DGV哪一行
         //在后台进行数据重排
         //将数据插入，将原数据行删除，重新绑定table
@@ -1157,7 +1138,7 @@ namespace HisWebServiceTest
             //dataGridView1.Rows.Insert(index, dgvr);
             //重新绑定
             DataTable dt = dsInArgs.Tables[0];
-
+            if (IndexDrop == -1) return;
             if (IndexDel > IndexDrop)
             {
                 dt.Rows.Remove(dt.Rows[IndexDel]);
@@ -1180,11 +1161,12 @@ namespace HisWebServiceTest
 
         private void dataGridView1_MouseDown(object sender, MouseEventArgs e)
         {
+            if (dsInArgs == null) return;
             DataRow dr = dsInArgs.Tables[0].NewRow();
             if (e.Button == MouseButtons.Left)
             {
                 DataGridView.HitTestInfo info = this.dataGridView1.HitTest(e.X, e.Y);
-                if ((info.RowIndex) >= 0&&info.Type==DataGridViewHitTestType.RowHeader)
+                if ((info.RowIndex) >= 0 && info.Type == DataGridViewHitTestType.RowHeader)
                 {
                     IndexDel = info.RowIndex;
                     dr["to"] = dataGridView1.Rows[IndexDel].Cells["to"].Value;
@@ -1200,6 +1182,7 @@ namespace HisWebServiceTest
 
         private void dataGridView2_MouseDown(object sender, MouseEventArgs e)
         {
+            if (dsOutArgs == null) return;
             DataRow dr = dsOutArgs.Tables[0].NewRow();
             if (e.Button == MouseButtons.Left)
             {
@@ -1250,15 +1233,73 @@ namespace HisWebServiceTest
         private void dataGridView2_DragEnter(object sender, DragEventArgs e)
         {
             e.Effect = DragDropEffects.Move;
-        } 
+        }
         #endregion
+        //todo:
 
-        private void toolStripMenuItem1_Click(object sender, EventArgs e)
+
+        public static string SetParamsDictionaryXml(string xmlFile, string methodName)
         {
+            string paramsXml = "<params></params>";
+            XmlDocument paramsXmlDoc = new XmlDocument();
+            paramsXmlDoc.LoadXml(paramsXml);
 
+            try
+            {
+                // string xmlDoc = String.Format("{0}{1}", AppDomain.CurrentDomain.BaseDirectory, xmlFile);
+
+                XmlDocument xmldoc = new XmlDocument();
+                xmldoc.Load(xmlFile);
+                XmlNodeList list = null;
+                XmlNode methodNode = xmldoc.SelectSingleNode(String.Format("root/method[@name='{0}']/params", methodName));
+                if (methodName != null) { list = methodNode.ChildNodes; }
+
+                if (list != null && list.Count > 0)
+                {
+                    for (int i = 0; i < list.Count; i++)
+                    {
+                        string name = list[i].Attributes["from"] != null ? list[i].Attributes["from"].Value : null;
+
+                        XmlNode paramNode = paramsXmlDoc.CreateElement(name);
+                        paramNode.InnerText = list[i].Attributes["defaultvalue"] != null ? list[i].Attributes["defaultvalue"].Value : null;
+                        paramsXmlDoc.LastChild.AppendChild(paramNode);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            if (paramsXmlDoc.ChildNodes.Count > 0)
+                paramsXml = paramsXmlDoc.OuterXml;
+            else
+                paramsXml = null;
+
+            return paramsXml;
         }
 
-        
+        private void txtname_MouseLeave(object sender, EventArgs e)
+        {
+            CheckIsExsit();
+        }
+        void CheckIsExsit()
+        {
+            if (xmldoc == null) return;
+            if (isAdd == false && txtnameText == txtname.Text) return;
+            XmlNode hasnode = xmldoc.SelectSingleNode(string.Format("root/method[@name='{0}']", txtname.Text));
+            if (hasnode != null)
+            {
+                do
+                {
+                    hasnode = hasnode.PreviousSibling;
+                }
+                while (!(hasnode.PreviousSibling is XmlComment));
+                XmlComment comment = hasnode.PreviousSibling as XmlComment;
+                MessageBox.Show("“" + comment.InnerText + "”分类下，已存在名称为“" + txtname.Text + "”的方法。");
+                return;
+            }
+        }
+
 
 
 

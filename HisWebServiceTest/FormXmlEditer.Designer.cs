@@ -71,11 +71,6 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.to = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.from = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.description = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.type = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.mode = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.lblNotice = new System.Windows.Forms.Label();
             this.txtClearOutput = new System.Windows.Forms.Button();
@@ -92,13 +87,19 @@
             this.txtFind = new System.Windows.Forms.TextBox();
             this.txtHistory = new System.Windows.Forms.TextBox();
             this.lstHistoryList = new System.Windows.Forms.ListBox();
+            this.tabPage4 = new System.Windows.Forms.TabPage();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.OpenDialog = new System.Windows.Forms.ToolStripMenuItem();
             this.DelFile = new System.Windows.Forms.ToolStripMenuItem();
             this.treeView1 = new System.Windows.Forms.TreeView();
-            this.tabPage4 = new System.Windows.Forms.TabPage();
             this.contextMenuStrip2 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.to = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.from = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.description = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.defaultvalue = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.type = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.mode = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.statusStrip1.SuspendLayout();
             this.menuStrip2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
@@ -124,8 +125,6 @@
             this.textBox1.TabIndex = 6;
             this.textBox1.Text = "Adapter.His.xml文件拖拽至此";
             this.textBox1.Visible = false;
-            this.textBox1.DragDrop += new System.Windows.Forms.DragEventHandler(this.textBox1_DragDrop);
-            this.textBox1.DragEnter += new System.Windows.Forms.DragEventHandler(this.textBox1_DragEnter);
             // 
             // checkedListBox1
             // 
@@ -133,7 +132,7 @@
             this.checkedListBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.checkedListBox1.FormattingEnabled = true;
             this.checkedListBox1.HorizontalScrollbar = true;
-            this.checkedListBox1.Location = new System.Drawing.Point(10, 383);
+            this.checkedListBox1.Location = new System.Drawing.Point(10, 384);
             this.checkedListBox1.Margin = new System.Windows.Forms.Padding(2);
             this.checkedListBox1.Name = "checkedListBox1";
             this.checkedListBox1.Size = new System.Drawing.Size(263, 821);
@@ -145,7 +144,7 @@
             // 
             // btnSelectAll
             // 
-            this.btnSelectAll.Location = new System.Drawing.Point(10, 341);
+            this.btnSelectAll.Location = new System.Drawing.Point(10, 342);
             this.btnSelectAll.Margin = new System.Windows.Forms.Padding(2);
             this.btnSelectAll.Name = "btnSelectAll";
             this.btnSelectAll.Size = new System.Drawing.Size(77, 38);
@@ -156,7 +155,7 @@
             // 
             // btnSelectOther
             // 
-            this.btnSelectOther.Location = new System.Drawing.Point(90, 341);
+            this.btnSelectOther.Location = new System.Drawing.Point(90, 342);
             this.btnSelectOther.Margin = new System.Windows.Forms.Padding(2);
             this.btnSelectOther.Name = "btnSelectOther";
             this.btnSelectOther.Size = new System.Drawing.Size(74, 38);
@@ -167,7 +166,7 @@
             // 
             // btnDelSelect
             // 
-            this.btnDelSelect.Location = new System.Drawing.Point(170, 341);
+            this.btnDelSelect.Location = new System.Drawing.Point(170, 342);
             this.btnDelSelect.Margin = new System.Windows.Forms.Padding(2);
             this.btnDelSelect.Name = "btnDelSelect";
             this.btnDelSelect.Size = new System.Drawing.Size(104, 38);
@@ -439,6 +438,7 @@
             this.txtname.Name = "txtname";
             this.txtname.Size = new System.Drawing.Size(452, 53);
             this.txtname.TabIndex = 43;
+            this.txtname.MouseLeave += new System.EventHandler(this.txtname_MouseLeave);
             // 
             // txtcall
             // 
@@ -524,6 +524,7 @@
             this.to,
             this.from,
             this.description,
+            this.defaultvalue,
             this.type,
             this.mode});
             this.dataGridView1.Location = new System.Drawing.Point(49, 132);
@@ -536,42 +537,6 @@
             this.dataGridView1.DragDrop += new System.Windows.Forms.DragEventHandler(this.dataGridView1_DragDrop);
             this.dataGridView1.DragEnter += new System.Windows.Forms.DragEventHandler(this.dataGridView1_DragEnter);
             this.dataGridView1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.dataGridView1_MouseDown);
-            // 
-            // to
-            // 
-            this.to.DataPropertyName = "to";
-            this.to.HeaderText = "转换后名称";
-            this.to.MinimumWidth = 10;
-            this.to.Name = "to";
-            this.to.ToolTipText = "转换后参数名称（Hss使用参数名）";
-            // 
-            // from
-            // 
-            this.from.DataPropertyName = "from";
-            this.from.HeaderText = "转换前名称";
-            this.from.Name = "from";
-            this.from.ToolTipText = "转换前参数名称（His返回名称）";
-            // 
-            // description
-            // 
-            this.description.DataPropertyName = "description";
-            this.description.HeaderText = "描述";
-            this.description.Name = "description";
-            this.description.ToolTipText = "参数描述";
-            // 
-            // type
-            // 
-            this.type.DataPropertyName = "type";
-            this.type.HeaderText = "变量类型";
-            this.type.Name = "type";
-            this.type.ToolTipText = "参数变量类型";
-            // 
-            // mode
-            // 
-            this.mode.DataPropertyName = "mode";
-            this.mode.HeaderText = "方式";
-            this.mode.Name = "mode";
-            this.mode.ToolTipText = "默认System";
             // 
             // tabPage1
             // 
@@ -704,7 +669,7 @@
             // 
             this.btnTest.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.btnTest.Font = new System.Drawing.Font("宋体", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btnTest.Location = new System.Drawing.Point(174, 82);
+            this.btnTest.Location = new System.Drawing.Point(193, 83);
             this.btnTest.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnTest.Name = "btnTest";
             this.btnTest.Size = new System.Drawing.Size(150, 48);
@@ -763,6 +728,16 @@
             this.lstHistoryList.SelectedIndexChanged += new System.EventHandler(this.lstHistoryList_SelectedIndexChanged);
             this.lstHistoryList.MouseUp += new System.Windows.Forms.MouseEventHandler(this.lstHistoryList_MouseUp);
             // 
+            // tabPage4
+            // 
+            this.tabPage4.Location = new System.Drawing.Point(4, 29);
+            this.tabPage4.Name = "tabPage4";
+            this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage4.Size = new System.Drawing.Size(1146, 1171);
+            this.tabPage4.TabIndex = 3;
+            this.tabPage4.Text = "数据库测试日志";
+            this.tabPage4.UseVisualStyleBackColor = true;
+            // 
             // contextMenuStrip1
             // 
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -787,22 +762,12 @@
             // 
             // treeView1
             // 
-            this.treeView1.Location = new System.Drawing.Point(12, 32);
+            this.treeView1.Location = new System.Drawing.Point(12, 36);
             this.treeView1.Name = "treeView1";
             this.treeView1.Size = new System.Drawing.Size(263, 304);
             this.treeView1.TabIndex = 50;
             this.treeView1.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterSelect);
             this.treeView1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.treeView1_MouseUp);
-            // 
-            // tabPage4
-            // 
-            this.tabPage4.Location = new System.Drawing.Point(4, 29);
-            this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage4.Size = new System.Drawing.Size(1146, 1171);
-            this.tabPage4.TabIndex = 3;
-            this.tabPage4.Text = "数据库测试日志";
-            this.tabPage4.UseVisualStyleBackColor = true;
             // 
             // contextMenuStrip2
             // 
@@ -817,6 +782,47 @@
             this.toolStripMenuItem1.Size = new System.Drawing.Size(188, 28);
             this.toolStripMenuItem1.Text = "新增参数方法";
             this.toolStripMenuItem1.Click += new System.EventHandler(this.toolStripMenuItem1_Click);
+            // 
+            // to
+            // 
+            this.to.DataPropertyName = "to";
+            this.to.HeaderText = "转换后名称";
+            this.to.MinimumWidth = 10;
+            this.to.Name = "to";
+            this.to.ToolTipText = "转换后参数名称（Hss使用参数名）";
+            // 
+            // from
+            // 
+            this.from.DataPropertyName = "from";
+            this.from.HeaderText = "转换前名称";
+            this.from.Name = "from";
+            this.from.ToolTipText = "转换前参数名称（His返回名称）";
+            // 
+            // description
+            // 
+            this.description.DataPropertyName = "description";
+            this.description.HeaderText = "描述";
+            this.description.Name = "description";
+            this.description.ToolTipText = "参数描述";
+            // 
+            // defaultvalue
+            // 
+            this.defaultvalue.HeaderText = "默认值";
+            this.defaultvalue.Name = "defaultvalue";
+            // 
+            // type
+            // 
+            this.type.DataPropertyName = "type";
+            this.type.HeaderText = "变量类型";
+            this.type.Name = "type";
+            this.type.ToolTipText = "参数变量类型";
+            // 
+            // mode
+            // 
+            this.mode.DataPropertyName = "mode";
+            this.mode.HeaderText = "方式";
+            this.mode.Name = "mode";
+            this.mode.ToolTipText = "默认System";
             // 
             // FormXmlEditer
             // 
@@ -922,11 +928,6 @@
         private System.Windows.Forms.ToolStripMenuItem DelFile;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.TreeView treeView1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn to;
-        private System.Windows.Forms.DataGridViewTextBoxColumn from;
-        private System.Windows.Forms.DataGridViewTextBoxColumn description;
-        private System.Windows.Forms.DataGridViewTextBoxColumn type;
-        private System.Windows.Forms.DataGridViewTextBoxColumn mode;
         private System.Windows.Forms.DataGridViewTextBoxColumn to1;
         private System.Windows.Forms.DataGridViewTextBoxColumn from1;
         private System.Windows.Forms.DataGridViewTextBoxColumn description1;
@@ -936,5 +937,11 @@
         private System.Windows.Forms.TabPage tabPage4;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip2;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn to;
+        private System.Windows.Forms.DataGridViewTextBoxColumn from;
+        private System.Windows.Forms.DataGridViewTextBoxColumn description;
+        private System.Windows.Forms.DataGridViewTextBoxColumn defaultvalue;
+        private System.Windows.Forms.DataGridViewTextBoxColumn type;
+        private System.Windows.Forms.DataGridViewTextBoxColumn mode;
     }
 }
